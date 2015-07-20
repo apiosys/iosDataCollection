@@ -17,6 +17,7 @@
 @property(nonatomic, readonly) NSString *printableLocationInfo;
 @property(nonatomic, readonly) NSString *printableLocationMetaDataInfo;
 
+
 /**
  The actual and latest CLLocation as provided by Core Location
  */
