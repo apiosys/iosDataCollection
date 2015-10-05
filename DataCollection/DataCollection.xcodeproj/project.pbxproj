@@ -1,0 +1,722 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		057C474B1BC2E90400517C28 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C474A1BC2E90400517C28 /* main.m */; };
+		057C474E1BC2E90400517C28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C474D1BC2E90400517C28 /* AppDelegate.m */; };
+		057C47571BC2E90400517C28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057C47551BC2E90400517C28 /* Main.storyboard */; };
+		057C47591BC2E90400517C28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 057C47581BC2E90400517C28 /* Assets.xcassets */; };
+		057C475C1BC2E90400517C28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057C475A1BC2E90400517C28 /* LaunchScreen.storyboard */; };
+		057C47671BC2E90400517C28 /* DataCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47661BC2E90400517C28 /* DataCollectionTests.m */; };
+		057C47721BC2E90400517C28 /* DataCollectionUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47711BC2E90400517C28 /* DataCollectionUITests.m */; };
+		057C47821BC2E9BB00517C28 /* DataCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47811BC2E9BB00517C28 /* DataCollectionVC.m */; settings = {ASSET_TAGS = (); }; };
+		057C47841BC2F42E00517C28 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057C47831BC2F42E00517C28 /* CoreMotion.framework */; };
+		057C47861BC2F43500517C28 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057C47851BC2F43500517C28 /* CoreBluetooth.framework */; };
+		057C47881BC2F44000517C28 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057C47871BC2F44000517C28 /* CoreLocation.framework */; };
+		057C478B1BC2F6F400517C28 /* BTConnectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C478A1BC2F6F400517C28 /* BTConnectionVC.m */; settings = {ASSET_TAGS = (); }; };
+		057C47A01BC2F7A700517C28 /* STAccelerometerMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47911BC2F7A700517C28 /* STAccelerometerMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47A11BC2F7A700517C28 /* STAccelerometerMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47911BC2F7A700517C28 /* STAccelerometerMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47A21BC2F7A700517C28 /* STAccelerometerMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47911BC2F7A700517C28 /* STAccelerometerMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47A31BC2F7A700517C28 /* STActivityMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47931BC2F7A700517C28 /* STActivityMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47A41BC2F7A700517C28 /* STActivityMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47931BC2F7A700517C28 /* STActivityMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47A51BC2F7A700517C28 /* STActivityMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47931BC2F7A700517C28 /* STActivityMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47A61BC2F7A700517C28 /* STGpsMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47951BC2F7A700517C28 /* STGpsMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47A71BC2F7A700517C28 /* STGpsMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47951BC2F7A700517C28 /* STGpsMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47A81BC2F7A700517C28 /* STGpsMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47951BC2F7A700517C28 /* STGpsMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47A91BC2F7A700517C28 /* STGyroMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47971BC2F7A700517C28 /* STGyroMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47AA1BC2F7A700517C28 /* STGyroMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47971BC2F7A700517C28 /* STGyroMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47AB1BC2F7A700517C28 /* STGyroMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47971BC2F7A700517C28 /* STGyroMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47AC1BC2F7A700517C28 /* STMagnetrometerMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47991BC2F7A700517C28 /* STMagnetrometerMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47AD1BC2F7A700517C28 /* STMagnetrometerMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47991BC2F7A700517C28 /* STMagnetrometerMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47AE1BC2F7A700517C28 /* STMagnetrometerMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47991BC2F7A700517C28 /* STMagnetrometerMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47AF1BC2F7A700517C28 /* STMotionMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C479B1BC2F7A700517C28 /* STMotionMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47B01BC2F7A700517C28 /* STMotionMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C479B1BC2F7A700517C28 /* STMotionMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47B11BC2F7A700517C28 /* STMotionMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C479B1BC2F7A700517C28 /* STMotionMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47B21BC2F7A700517C28 /* STProximityMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C479D1BC2F7A700517C28 /* STProximityMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47B31BC2F7A700517C28 /* STProximityMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C479D1BC2F7A700517C28 /* STProximityMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47B41BC2F7A700517C28 /* STProximityMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C479D1BC2F7A700517C28 /* STProximityMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47B51BC2F7A700517C28 /* STSensorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C479F1BC2F7A700517C28 /* STSensorManager.m */; settings = {ASSET_TAGS = (); }; };
+		057C47B61BC2F7A700517C28 /* STSensorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C479F1BC2F7A700517C28 /* STSensorManager.m */; settings = {ASSET_TAGS = (); }; };
+		057C47B71BC2F7A700517C28 /* STSensorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C479F1BC2F7A700517C28 /* STSensorManager.m */; settings = {ASSET_TAGS = (); }; };
+		057C47BE1BC2F7B700517C28 /* CBtleCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47B91BC2F7B700517C28 /* CBtleCentralManager.m */; settings = {ASSET_TAGS = (); }; };
+		057C47BF1BC2F7B700517C28 /* CBtleCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47B91BC2F7B700517C28 /* CBtleCentralManager.m */; settings = {ASSET_TAGS = (); }; };
+		057C47C01BC2F7B700517C28 /* CBtleCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47B91BC2F7B700517C28 /* CBtleCentralManager.m */; settings = {ASSET_TAGS = (); }; };
+		057C47C11BC2F7B700517C28 /* CentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47BB1BC2F7B700517C28 /* CentralManager.m */; settings = {ASSET_TAGS = (); }; };
+		057C47C21BC2F7B700517C28 /* CentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47BB1BC2F7B700517C28 /* CentralManager.m */; settings = {ASSET_TAGS = (); }; };
+		057C47C31BC2F7B700517C28 /* CentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47BB1BC2F7B700517C28 /* CentralManager.m */; settings = {ASSET_TAGS = (); }; };
+		057C47C41BC2F7B700517C28 /* PeripheralHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47BD1BC2F7B700517C28 /* PeripheralHandler.m */; settings = {ASSET_TAGS = (); }; };
+		057C47C51BC2F7B700517C28 /* PeripheralHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47BD1BC2F7B700517C28 /* PeripheralHandler.m */; settings = {ASSET_TAGS = (); }; };
+		057C47C61BC2F7B700517C28 /* PeripheralHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47BD1BC2F7B700517C28 /* PeripheralHandler.m */; settings = {ASSET_TAGS = (); }; };
+		057C47CA1BC2F82700517C28 /* CMotionLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47C91BC2F82700517C28 /* CMotionLogger.m */; settings = {ASSET_TAGS = (); }; };
+		057C47CB1BC2F82700517C28 /* CMotionLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47C91BC2F82700517C28 /* CMotionLogger.m */; settings = {ASSET_TAGS = (); }; };
+		057C47CC1BC2F82700517C28 /* CMotionLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47C91BC2F82700517C28 /* CMotionLogger.m */; settings = {ASSET_TAGS = (); }; };
+		057C47CF1BC2F84A00517C28 /* CSensorSampleInfoContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47CE1BC2F84A00517C28 /* CSensorSampleInfoContainer.m */; settings = {ASSET_TAGS = (); }; };
+		057C47D01BC2F84A00517C28 /* CSensorSampleInfoContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47CE1BC2F84A00517C28 /* CSensorSampleInfoContainer.m */; settings = {ASSET_TAGS = (); }; };
+		057C47D11BC2F84A00517C28 /* CSensorSampleInfoContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47CE1BC2F84A00517C28 /* CSensorSampleInfoContainer.m */; settings = {ASSET_TAGS = (); }; };
+		057C47D41BC30C8000517C28 /* STAltimiterMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47D31BC30C8000517C28 /* STAltimiterMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47D51BC30C8000517C28 /* STAltimiterMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47D31BC30C8000517C28 /* STAltimiterMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		057C47D61BC30C8000517C28 /* STAltimiterMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47D31BC30C8000517C28 /* STAltimiterMonitor.m */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		057C47631BC2E90400517C28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 057C473E1BC2E90400517C28 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 057C47451BC2E90400517C28;
+			remoteInfo = DataCollection;
+		};
+		057C476E1BC2E90400517C28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 057C473E1BC2E90400517C28 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 057C47451BC2E90400517C28;
+			remoteInfo = DataCollection;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		057C47461BC2E90400517C28 /* DataCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		057C474A1BC2E90400517C28 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		057C474C1BC2E90400517C28 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		057C474D1BC2E90400517C28 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		057C47561BC2E90400517C28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		057C47581BC2E90400517C28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		057C475B1BC2E90400517C28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		057C475D1BC2E90400517C28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		057C47621BC2E90400517C28 /* DataCollectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataCollectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		057C47661BC2E90400517C28 /* DataCollectionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataCollectionTests.m; sourceTree = "<group>"; };
+		057C47681BC2E90400517C28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		057C476D1BC2E90400517C28 /* DataCollectionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataCollectionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		057C47711BC2E90400517C28 /* DataCollectionUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataCollectionUITests.m; sourceTree = "<group>"; };
+		057C47731BC2E90400517C28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		057C47801BC2E9BB00517C28 /* DataCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCollectionVC.h; path = DataCollection/ViewControllers/DataCollectionVC.h; sourceTree = "<group>"; };
+		057C47811BC2E9BB00517C28 /* DataCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataCollectionVC.m; path = DataCollection/ViewControllers/DataCollectionVC.m; sourceTree = "<group>"; };
+		057C47831BC2F42E00517C28 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		057C47851BC2F43500517C28 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		057C47871BC2F44000517C28 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		057C47891BC2F6F400517C28 /* BTConnectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTConnectionVC.h; path = DataCollection/ViewControllers/BTConnectionVC.h; sourceTree = "<group>"; };
+		057C478A1BC2F6F400517C28 /* BTConnectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTConnectionVC.m; path = DataCollection/ViewControllers/BTConnectionVC.m; sourceTree = "<group>"; };
+		057C478E1BC2F7A700517C28 /* SensorModuleProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SensorModuleProtocols.h; path = DataCollection/SensorModules/SensorModuleProtocols.h; sourceTree = "<group>"; };
+		057C478F1BC2F7A700517C28 /* SensorMonitoringDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SensorMonitoringDefs.h; path = DataCollection/SensorModules/SensorMonitoringDefs.h; sourceTree = "<group>"; };
+		057C47901BC2F7A700517C28 /* STAccelerometerMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STAccelerometerMonitor.h; path = DataCollection/SensorModules/STAccelerometerMonitor.h; sourceTree = "<group>"; };
+		057C47911BC2F7A700517C28 /* STAccelerometerMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STAccelerometerMonitor.m; path = DataCollection/SensorModules/STAccelerometerMonitor.m; sourceTree = "<group>"; };
+		057C47921BC2F7A700517C28 /* STActivityMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STActivityMonitor.h; path = DataCollection/SensorModules/STActivityMonitor.h; sourceTree = "<group>"; };
+		057C47931BC2F7A700517C28 /* STActivityMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STActivityMonitor.m; path = DataCollection/SensorModules/STActivityMonitor.m; sourceTree = "<group>"; };
+		057C47941BC2F7A700517C28 /* STGpsMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STGpsMonitor.h; path = DataCollection/SensorModules/STGpsMonitor.h; sourceTree = "<group>"; };
+		057C47951BC2F7A700517C28 /* STGpsMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STGpsMonitor.m; path = DataCollection/SensorModules/STGpsMonitor.m; sourceTree = "<group>"; };
+		057C47961BC2F7A700517C28 /* STGyroMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STGyroMonitor.h; path = DataCollection/SensorModules/STGyroMonitor.h; sourceTree = "<group>"; };
+		057C47971BC2F7A700517C28 /* STGyroMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STGyroMonitor.m; path = DataCollection/SensorModules/STGyroMonitor.m; sourceTree = "<group>"; };
+		057C47981BC2F7A700517C28 /* STMagnetrometerMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STMagnetrometerMonitor.h; path = DataCollection/SensorModules/STMagnetrometerMonitor.h; sourceTree = "<group>"; };
+		057C47991BC2F7A700517C28 /* STMagnetrometerMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STMagnetrometerMonitor.m; path = DataCollection/SensorModules/STMagnetrometerMonitor.m; sourceTree = "<group>"; };
+		057C479A1BC2F7A700517C28 /* STMotionMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STMotionMonitor.h; path = DataCollection/SensorModules/STMotionMonitor.h; sourceTree = "<group>"; };
+		057C479B1BC2F7A700517C28 /* STMotionMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STMotionMonitor.m; path = DataCollection/SensorModules/STMotionMonitor.m; sourceTree = "<group>"; };
+		057C479C1BC2F7A700517C28 /* STProximityMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STProximityMonitor.h; path = DataCollection/SensorModules/STProximityMonitor.h; sourceTree = "<group>"; };
+		057C479D1BC2F7A700517C28 /* STProximityMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STProximityMonitor.m; path = DataCollection/SensorModules/STProximityMonitor.m; sourceTree = "<group>"; };
+		057C479E1BC2F7A700517C28 /* STSensorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STSensorManager.h; path = DataCollection/SensorModules/STSensorManager.h; sourceTree = "<group>"; };
+		057C479F1BC2F7A700517C28 /* STSensorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STSensorManager.m; path = DataCollection/SensorModules/STSensorManager.m; sourceTree = "<group>"; };
+		057C47B81BC2F7B700517C28 /* CBtleCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBtleCentralManager.h; path = DataCollection/SensorModules/BTLE_Modules/CBtleCentralManager.h; sourceTree = "<group>"; };
+		057C47B91BC2F7B700517C28 /* CBtleCentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBtleCentralManager.m; path = DataCollection/SensorModules/BTLE_Modules/CBtleCentralManager.m; sourceTree = "<group>"; };
+		057C47BA1BC2F7B700517C28 /* CentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CentralManager.h; path = DataCollection/SensorModules/BTLE_Modules/CentralManager.h; sourceTree = "<group>"; };
+		057C47BB1BC2F7B700517C28 /* CentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CentralManager.m; path = DataCollection/SensorModules/BTLE_Modules/CentralManager.m; sourceTree = "<group>"; };
+		057C47BC1BC2F7B700517C28 /* PeripheralHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeripheralHandler.h; path = DataCollection/SensorModules/BTLE_Modules/PeripheralHandler.h; sourceTree = "<group>"; };
+		057C47BD1BC2F7B700517C28 /* PeripheralHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeripheralHandler.m; path = DataCollection/SensorModules/BTLE_Modules/PeripheralHandler.m; sourceTree = "<group>"; };
+		057C47C81BC2F82700517C28 /* CMotionLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMotionLogger.h; path = DataCollection/GeneralTools/CMotionLogger.h; sourceTree = "<group>"; };
+		057C47C91BC2F82700517C28 /* CMotionLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMotionLogger.m; path = DataCollection/GeneralTools/CMotionLogger.m; sourceTree = "<group>"; };
+		057C47CD1BC2F84A00517C28 /* CSensorSampleInfoContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSensorSampleInfoContainer.h; path = DataCollection/GeneralTools/CSensorSampleInfoContainer.h; sourceTree = "<group>"; };
+		057C47CE1BC2F84A00517C28 /* CSensorSampleInfoContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSensorSampleInfoContainer.m; path = DataCollection/GeneralTools/CSensorSampleInfoContainer.m; sourceTree = "<group>"; };
+		057C47D21BC30C8000517C28 /* STAltimiterMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STAltimiterMonitor.h; path = DataCollection/SensorModules/STAltimiterMonitor.h; sourceTree = "<group>"; };
+		057C47D31BC30C8000517C28 /* STAltimiterMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STAltimiterMonitor.m; path = DataCollection/SensorModules/STAltimiterMonitor.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		057C47431BC2E90400517C28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				057C47881BC2F44000517C28 /* CoreLocation.framework in Frameworks */,
+				057C47861BC2F43500517C28 /* CoreBluetooth.framework in Frameworks */,
+				057C47841BC2F42E00517C28 /* CoreMotion.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		057C475F1BC2E90400517C28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		057C476A1BC2E90400517C28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		057C473D1BC2E90400517C28 = {
+			isa = PBXGroup;
+			children = (
+				057C47C71BC2F7E900517C28 /* GeneralTools */,
+				057C478C1BC2F74D00517C28 /* SensorModules */,
+				057C477F1BC2E99000517C28 /* ViewControllers */,
+				057C47481BC2E90400517C28 /* DataCollection */,
+				057C47651BC2E90400517C28 /* DataCollectionTests */,
+				057C47701BC2E90400517C28 /* DataCollectionUITests */,
+				057C47471BC2E90400517C28 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		057C47471BC2E90400517C28 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				057C47461BC2E90400517C28 /* DataCollection.app */,
+				057C47621BC2E90400517C28 /* DataCollectionTests.xctest */,
+				057C476D1BC2E90400517C28 /* DataCollectionUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		057C47481BC2E90400517C28 /* DataCollection */ = {
+			isa = PBXGroup;
+			children = (
+				057C474C1BC2E90400517C28 /* AppDelegate.h */,
+				057C474D1BC2E90400517C28 /* AppDelegate.m */,
+				057C47551BC2E90400517C28 /* Main.storyboard */,
+				057C47581BC2E90400517C28 /* Assets.xcassets */,
+				057C475A1BC2E90400517C28 /* LaunchScreen.storyboard */,
+				057C475D1BC2E90400517C28 /* Info.plist */,
+				057C47491BC2E90400517C28 /* Supporting Files */,
+			);
+			path = DataCollection;
+			sourceTree = "<group>";
+		};
+		057C47491BC2E90400517C28 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				057C47871BC2F44000517C28 /* CoreLocation.framework */,
+				057C47851BC2F43500517C28 /* CoreBluetooth.framework */,
+				057C47831BC2F42E00517C28 /* CoreMotion.framework */,
+				057C474A1BC2E90400517C28 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		057C47651BC2E90400517C28 /* DataCollectionTests */ = {
+			isa = PBXGroup;
+			children = (
+				057C47661BC2E90400517C28 /* DataCollectionTests.m */,
+				057C47681BC2E90400517C28 /* Info.plist */,
+			);
+			path = DataCollectionTests;
+			sourceTree = "<group>";
+		};
+		057C47701BC2E90400517C28 /* DataCollectionUITests */ = {
+			isa = PBXGroup;
+			children = (
+				057C47711BC2E90400517C28 /* DataCollectionUITests.m */,
+				057C47731BC2E90400517C28 /* Info.plist */,
+			);
+			path = DataCollectionUITests;
+			sourceTree = "<group>";
+		};
+		057C477F1BC2E99000517C28 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				057C47801BC2E9BB00517C28 /* DataCollectionVC.h */,
+				057C47811BC2E9BB00517C28 /* DataCollectionVC.m */,
+				057C47891BC2F6F400517C28 /* BTConnectionVC.h */,
+				057C478A1BC2F6F400517C28 /* BTConnectionVC.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		057C478C1BC2F74D00517C28 /* SensorModules */ = {
+			isa = PBXGroup;
+			children = (
+				057C478D1BC2F78800517C28 /* BTLE_Modules */,
+				057C478E1BC2F7A700517C28 /* SensorModuleProtocols.h */,
+				057C478F1BC2F7A700517C28 /* SensorMonitoringDefs.h */,
+				057C47901BC2F7A700517C28 /* STAccelerometerMonitor.h */,
+				057C47911BC2F7A700517C28 /* STAccelerometerMonitor.m */,
+				057C47D21BC30C8000517C28 /* STAltimiterMonitor.h */,
+				057C47D31BC30C8000517C28 /* STAltimiterMonitor.m */,
+				057C47921BC2F7A700517C28 /* STActivityMonitor.h */,
+				057C47931BC2F7A700517C28 /* STActivityMonitor.m */,
+				057C47941BC2F7A700517C28 /* STGpsMonitor.h */,
+				057C47951BC2F7A700517C28 /* STGpsMonitor.m */,
+				057C47961BC2F7A700517C28 /* STGyroMonitor.h */,
+				057C47971BC2F7A700517C28 /* STGyroMonitor.m */,
+				057C47981BC2F7A700517C28 /* STMagnetrometerMonitor.h */,
+				057C47991BC2F7A700517C28 /* STMagnetrometerMonitor.m */,
+				057C479A1BC2F7A700517C28 /* STMotionMonitor.h */,
+				057C479B1BC2F7A700517C28 /* STMotionMonitor.m */,
+				057C479C1BC2F7A700517C28 /* STProximityMonitor.h */,
+				057C479D1BC2F7A700517C28 /* STProximityMonitor.m */,
+				057C479E1BC2F7A700517C28 /* STSensorManager.h */,
+				057C479F1BC2F7A700517C28 /* STSensorManager.m */,
+			);
+			name = SensorModules;
+			sourceTree = "<group>";
+		};
+		057C478D1BC2F78800517C28 /* BTLE_Modules */ = {
+			isa = PBXGroup;
+			children = (
+				057C47B81BC2F7B700517C28 /* CBtleCentralManager.h */,
+				057C47B91BC2F7B700517C28 /* CBtleCentralManager.m */,
+				057C47BA1BC2F7B700517C28 /* CentralManager.h */,
+				057C47BB1BC2F7B700517C28 /* CentralManager.m */,
+				057C47BC1BC2F7B700517C28 /* PeripheralHandler.h */,
+				057C47BD1BC2F7B700517C28 /* PeripheralHandler.m */,
+			);
+			name = BTLE_Modules;
+			sourceTree = "<group>";
+		};
+		057C47C71BC2F7E900517C28 /* GeneralTools */ = {
+			isa = PBXGroup;
+			children = (
+				057C47C81BC2F82700517C28 /* CMotionLogger.h */,
+				057C47C91BC2F82700517C28 /* CMotionLogger.m */,
+				057C47CD1BC2F84A00517C28 /* CSensorSampleInfoContainer.h */,
+				057C47CE1BC2F84A00517C28 /* CSensorSampleInfoContainer.m */,
+			);
+			name = GeneralTools;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		057C47451BC2E90400517C28 /* DataCollection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 057C47761BC2E90400517C28 /* Build configuration list for PBXNativeTarget "DataCollection" */;
+			buildPhases = (
+				057C47421BC2E90400517C28 /* Sources */,
+				057C47431BC2E90400517C28 /* Frameworks */,
+				057C47441BC2E90400517C28 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DataCollection;
+			productName = DataCollection;
+			productReference = 057C47461BC2E90400517C28 /* DataCollection.app */;
+			productType = "com.apple.product-type.application";
+		};
+		057C47611BC2E90400517C28 /* DataCollectionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 057C47791BC2E90400517C28 /* Build configuration list for PBXNativeTarget "DataCollectionTests" */;
+			buildPhases = (
+				057C475E1BC2E90400517C28 /* Sources */,
+				057C475F1BC2E90400517C28 /* Frameworks */,
+				057C47601BC2E90400517C28 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				057C47641BC2E90400517C28 /* PBXTargetDependency */,
+			);
+			name = DataCollectionTests;
+			productName = DataCollectionTests;
+			productReference = 057C47621BC2E90400517C28 /* DataCollectionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		057C476C1BC2E90400517C28 /* DataCollectionUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 057C477C1BC2E90400517C28 /* Build configuration list for PBXNativeTarget "DataCollectionUITests" */;
+			buildPhases = (
+				057C47691BC2E90400517C28 /* Sources */,
+				057C476A1BC2E90400517C28 /* Frameworks */,
+				057C476B1BC2E90400517C28 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				057C476F1BC2E90400517C28 /* PBXTargetDependency */,
+			);
+			name = DataCollectionUITests;
+			productName = DataCollectionUITests;
+			productReference = 057C476D1BC2E90400517C28 /* DataCollectionUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		057C473E1BC2E90400517C28 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Apio Systems";
+				TargetAttributes = {
+					057C47451BC2E90400517C28 = {
+						CreatedOnToolsVersion = 7.0.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					057C47611BC2E90400517C28 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 057C47451BC2E90400517C28;
+					};
+					057C476C1BC2E90400517C28 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 057C47451BC2E90400517C28;
+					};
+				};
+			};
+			buildConfigurationList = 057C47411BC2E90400517C28 /* Build configuration list for PBXProject "DataCollection" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 057C473D1BC2E90400517C28;
+			productRefGroup = 057C47471BC2E90400517C28 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				057C47451BC2E90400517C28 /* DataCollection */,
+				057C47611BC2E90400517C28 /* DataCollectionTests */,
+				057C476C1BC2E90400517C28 /* DataCollectionUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		057C47441BC2E90400517C28 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				057C475C1BC2E90400517C28 /* LaunchScreen.storyboard in Resources */,
+				057C47591BC2E90400517C28 /* Assets.xcassets in Resources */,
+				057C47571BC2E90400517C28 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		057C47601BC2E90400517C28 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		057C476B1BC2E90400517C28 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		057C47421BC2E90400517C28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				057C47CF1BC2F84A00517C28 /* CSensorSampleInfoContainer.m in Sources */,
+				057C47B51BC2F7A700517C28 /* STSensorManager.m in Sources */,
+				057C47B21BC2F7A700517C28 /* STProximityMonitor.m in Sources */,
+				057C474E1BC2E90400517C28 /* AppDelegate.m in Sources */,
+				057C47CA1BC2F82700517C28 /* CMotionLogger.m in Sources */,
+				057C47C11BC2F7B700517C28 /* CentralManager.m in Sources */,
+				057C47AF1BC2F7A700517C28 /* STMotionMonitor.m in Sources */,
+				057C47C41BC2F7B700517C28 /* PeripheralHandler.m in Sources */,
+				057C478B1BC2F6F400517C28 /* BTConnectionVC.m in Sources */,
+				057C47AC1BC2F7A700517C28 /* STMagnetrometerMonitor.m in Sources */,
+				057C47A91BC2F7A700517C28 /* STGyroMonitor.m in Sources */,
+				057C47D41BC30C8000517C28 /* STAltimiterMonitor.m in Sources */,
+				057C47A31BC2F7A700517C28 /* STActivityMonitor.m in Sources */,
+				057C47A61BC2F7A700517C28 /* STGpsMonitor.m in Sources */,
+				057C47821BC2E9BB00517C28 /* DataCollectionVC.m in Sources */,
+				057C47BE1BC2F7B700517C28 /* CBtleCentralManager.m in Sources */,
+				057C474B1BC2E90400517C28 /* main.m in Sources */,
+				057C47A01BC2F7A700517C28 /* STAccelerometerMonitor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		057C475E1BC2E90400517C28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				057C47671BC2E90400517C28 /* DataCollectionTests.m in Sources */,
+				057C47AA1BC2F7A700517C28 /* STGyroMonitor.m in Sources */,
+				057C47BF1BC2F7B700517C28 /* CBtleCentralManager.m in Sources */,
+				057C47AD1BC2F7A700517C28 /* STMagnetrometerMonitor.m in Sources */,
+				057C47B31BC2F7A700517C28 /* STProximityMonitor.m in Sources */,
+				057C47D51BC30C8000517C28 /* STAltimiterMonitor.m in Sources */,
+				057C47D01BC2F84A00517C28 /* CSensorSampleInfoContainer.m in Sources */,
+				057C47CB1BC2F82700517C28 /* CMotionLogger.m in Sources */,
+				057C47A11BC2F7A700517C28 /* STAccelerometerMonitor.m in Sources */,
+				057C47C21BC2F7B700517C28 /* CentralManager.m in Sources */,
+				057C47A71BC2F7A700517C28 /* STGpsMonitor.m in Sources */,
+				057C47C51BC2F7B700517C28 /* PeripheralHandler.m in Sources */,
+				057C47B61BC2F7A700517C28 /* STSensorManager.m in Sources */,
+				057C47A41BC2F7A700517C28 /* STActivityMonitor.m in Sources */,
+				057C47B01BC2F7A700517C28 /* STMotionMonitor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		057C47691BC2E90400517C28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				057C47721BC2E90400517C28 /* DataCollectionUITests.m in Sources */,
+				057C47AB1BC2F7A700517C28 /* STGyroMonitor.m in Sources */,
+				057C47C01BC2F7B700517C28 /* CBtleCentralManager.m in Sources */,
+				057C47AE1BC2F7A700517C28 /* STMagnetrometerMonitor.m in Sources */,
+				057C47B41BC2F7A700517C28 /* STProximityMonitor.m in Sources */,
+				057C47D61BC30C8000517C28 /* STAltimiterMonitor.m in Sources */,
+				057C47D11BC2F84A00517C28 /* CSensorSampleInfoContainer.m in Sources */,
+				057C47CC1BC2F82700517C28 /* CMotionLogger.m in Sources */,
+				057C47A21BC2F7A700517C28 /* STAccelerometerMonitor.m in Sources */,
+				057C47C31BC2F7B700517C28 /* CentralManager.m in Sources */,
+				057C47A81BC2F7A700517C28 /* STGpsMonitor.m in Sources */,
+				057C47C61BC2F7B700517C28 /* PeripheralHandler.m in Sources */,
+				057C47B71BC2F7A700517C28 /* STSensorManager.m in Sources */,
+				057C47A51BC2F7A700517C28 /* STActivityMonitor.m in Sources */,
+				057C47B11BC2F7A700517C28 /* STMotionMonitor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		057C47641BC2E90400517C28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 057C47451BC2E90400517C28 /* DataCollection */;
+			targetProxy = 057C47631BC2E90400517C28 /* PBXContainerItemProxy */;
+		};
+		057C476F1BC2E90400517C28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 057C47451BC2E90400517C28 /* DataCollection */;
+			targetProxy = 057C476E1BC2E90400517C28 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		057C47551BC2E90400517C28 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				057C47561BC2E90400517C28 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		057C475A1BC2E90400517C28 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				057C475B1BC2E90400517C28 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		057C47741BC2E90400517C28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		057C47751BC2E90400517C28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		057C47771BC2E90400517C28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DataCollection/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apiosystems.DataCollection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		057C47781BC2E90400517C28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DataCollection/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apiosystems.DataCollection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		057C477A1BC2E90400517C28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DataCollectionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apiosystems.DataCollectionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DataCollection.app/DataCollection";
+			};
+			name = Debug;
+		};
+		057C477B1BC2E90400517C28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DataCollectionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apiosystems.DataCollectionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DataCollection.app/DataCollection";
+			};
+			name = Release;
+		};
+		057C477D1BC2E90400517C28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DataCollectionUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apiosystems.DataCollectionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DataCollection;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		057C477E1BC2E90400517C28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DataCollectionUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apiosystems.DataCollectionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DataCollection;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		057C47411BC2E90400517C28 /* Build configuration list for PBXProject "DataCollection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				057C47741BC2E90400517C28 /* Debug */,
+				057C47751BC2E90400517C28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		057C47761BC2E90400517C28 /* Build configuration list for PBXNativeTarget "DataCollection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				057C47771BC2E90400517C28 /* Debug */,
+				057C47781BC2E90400517C28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		057C47791BC2E90400517C28 /* Build configuration list for PBXNativeTarget "DataCollectionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				057C477A1BC2E90400517C28 /* Debug */,
+				057C477B1BC2E90400517C28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		057C477C1BC2E90400517C28 /* Build configuration list for PBXNativeTarget "DataCollectionUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				057C477D1BC2E90400517C28 /* Debug */,
+				057C477E1BC2E90400517C28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 057C473E1BC2E90400517C28 /* Project object */;
+}
