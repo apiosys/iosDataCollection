@@ -75,6 +75,9 @@
 		if ([self.locMgr respondsToSelector:@selector(requestWhenInUseAuthorization)])
 			[self.locMgr requestAlwaysAuthorization];
 
+        if([self.locMgr respondsToSelector:@selector(setAllowsBackgroundLocationUpdates:)] == TRUE)
+            self.locMgr.allowsBackgroundLocationUpdates = TRUE;
+
 		self.locMgr.delegate = self;
 		self.locMgr.desiredAccuracy = kCLLocationAccuracyBest;
 		[self.locMgr startUpdatingLocation];

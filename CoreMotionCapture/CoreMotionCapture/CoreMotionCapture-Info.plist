@@ -44,12 +44,14 @@
 	<array>
 		<string>audio</string>
 		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
+		<string>fetch</string>
 		<string>location</string>
 	</array>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>
-	<string>Main_iPhone</string>
+	<string>MainStoryboard</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>Main_iPad</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -69,5 +71,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Can receive Bluetooth Notifications</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Will Update your location information.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Will Update your motion information.</string>
 </dict>
 </plist>

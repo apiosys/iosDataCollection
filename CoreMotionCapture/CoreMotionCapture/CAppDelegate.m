@@ -8,12 +8,17 @@
 #import "CAppDelegate.h"
 #import "CentralManager.h"
 
+@interface CAppDelegate()
+    @property(nonatomic) BOOL bAmBackgrounded;
+    @property(nonatomic) UIBackgroundTaskIdentifier bgTask;
+
+@end
+
 @implementation CAppDelegate
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	[Fabric with:@[CrashlyticsKit]];
-
+	[Fabric with:@[[Crashlytics class]]];
 	[UIApplication sharedApplication].idleTimerDisabled = YES;
 
 	// Override point for customization after application launch.
@@ -28,8 +33,16 @@
 
 -(void)applicationDidEnterBackground:(UIApplication *)application
 {
-	// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-	// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    self.bAmBackgrounded = TRUE;
+    
+    _bgTask = [application beginBackgroundTaskWithExpirationHandler: ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Wait until the pending operations finish
+            [[NSOperationQueue mainQueue] waitUntilAllOperationsAreFinished];
+            [application endBackgroundTask:_bgTask];
+            _bgTask = UIBackgroundTaskInvalid;
+        });
+    }];
 }
 
 -(void)applicationWillEnterForeground:(UIApplication *)application
