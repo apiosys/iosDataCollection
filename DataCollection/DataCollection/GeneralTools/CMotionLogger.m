@@ -135,6 +135,12 @@
 	}
 }
 
+-(void)writeLineToLog:(NSString *)lineEntry
+{
+	if([self writeCurrentData:lineEntry] == FALSE)
+		NSLog(@"Failed to write out the data entry");
+}
+
 -(BOOL)writeCurrentData:(NSString *)sensorInfo
 {
 	if(sensorInfo == nil)

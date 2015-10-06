@@ -15,6 +15,7 @@
 -(void)logGeneralHandling:(BOOL)bIsStarting;
 
 -(void)writeCurrentSamplesToLogFile;
+-(void)writeLineToLog:(NSString *)lineEntry;
 -(void)markAsStartDataCaptureTime;//Used to name the log file. The file is named the start time.
 
 @end

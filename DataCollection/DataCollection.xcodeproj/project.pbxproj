@@ -174,8 +174,6 @@
 				057C478C1BC2F74D00517C28 /* SensorModules */,
 				057C477F1BC2E99000517C28 /* ViewControllers */,
 				057C47481BC2E90400517C28 /* DataCollection */,
-				057C47651BC2E90400517C28 /* DataCollectionTests */,
-				057C47701BC2E90400517C28 /* DataCollectionUITests */,
 				057C47471BC2E90400517C28 /* Products */,
 				8E6D95B97B368F78ED8ADCFF /* Pods */,
 				ECE19187C041D268C675333C /* Frameworks */,
@@ -209,9 +207,8 @@
 		057C47491BC2E90400517C28 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				057C47871BC2F44000517C28 /* CoreLocation.framework */,
-				057C47851BC2F43500517C28 /* CoreBluetooth.framework */,
-				057C47831BC2F42E00517C28 /* CoreMotion.framework */,
+				059AE7FB1BC3F44500383C24 /* FrameWorks */,
+				059AE7FA1BC3F42200383C24 /* TestingComponents */,
 				057C474A1BC2E90400517C28 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -296,6 +293,26 @@
 				057C47CE1BC2F84A00517C28 /* CSensorSampleInfoContainer.m */,
 			);
 			name = GeneralTools;
+			sourceTree = "<group>";
+		};
+		059AE7FA1BC3F42200383C24 /* TestingComponents */ = {
+			isa = PBXGroup;
+			children = (
+				057C47701BC2E90400517C28 /* DataCollectionUITests */,
+				057C47651BC2E90400517C28 /* DataCollectionTests */,
+			);
+			name = TestingComponents;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		059AE7FB1BC3F44500383C24 /* FrameWorks */ = {
+			isa = PBXGroup;
+			children = (
+				057C47831BC2F42E00517C28 /* CoreMotion.framework */,
+				057C47851BC2F43500517C28 /* CoreBluetooth.framework */,
+				057C47871BC2F44000517C28 /* CoreLocation.framework */,
+			);
+			name = FrameWorks;
 			sourceTree = "<group>";
 		};
 		8E6D95B97B368F78ED8ADCFF /* Pods */ = {

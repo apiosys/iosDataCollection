@@ -7,7 +7,7 @@
 */
 
 #import "CentralManager.h"
-//#import "CMasterController.h"
+#import "CMotionLogger.h"
 
 #import "PeripheralHandler.h"
 
@@ -175,6 +175,7 @@
 	if( (strValue.length >= MIN_MSG_LEN) && (strValue.length <= MAX_MSG_LEN) )
 	{
 		strValue = [strValue stringByAppendingString:@"\n"];
+		[[CMotionLogger theLogger] writeLineToLog:strValue];
 	}
 }
 
