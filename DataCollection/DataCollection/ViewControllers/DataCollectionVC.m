@@ -44,7 +44,6 @@
 	-(IBAction)onGeneralHandling:(UIButton *)sender;
 	-(IBAction)onUserIsDriverSwitch:(UISwitch *)sender;
 	-(IBAction)onPhoneCallSimulation:(UIButton *)sender;
-	-(IBAction)onConnectToBTLEDevice:(UIButton *)sender;
 @end
 
 @implementation DataCollectionVC
@@ -172,13 +171,6 @@
 		btn.layer.borderColor = [UIColor blackColor].CGColor;
 		btn.backgroundColor = self.inactiveButtonColor;
 	}
-}
-
--(IBAction)onConnectToBTLEDevice:(UIButton *)sender
-{
-	//CBtleConnectionViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"btleavailabledevicesvc"];
-	
-	//[self.navigationController pushViewController:vc animated:YES];
 }
 
 -(IBAction)onUserIsDriverSwitch:(UISwitch *)sender
