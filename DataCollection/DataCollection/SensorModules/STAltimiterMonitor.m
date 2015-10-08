@@ -42,7 +42,7 @@
 	
 	//Altitiude in meters
 	//The pressure in kPa.
-	str = [NSString stringWithFormat:@"Alt:%.4lf Pres:%.4lf", [self.altimiterData.relativeAltitude floatValue], [self.altimiterData.pressure floatValue]];
+	str = [NSString stringWithFormat:@"%.4lf %.4lf", [self.altimiterData.relativeAltitude floatValue], [self.altimiterData.pressure floatValue]];
 
 	return str;
 }

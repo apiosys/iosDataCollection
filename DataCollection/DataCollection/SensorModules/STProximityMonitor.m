@@ -36,7 +36,7 @@
 
 -(NSString *)printableProximityInfo
 {
-	return (self.latestProximityReading == TRUE) ? @"Proximity:Close" : @"Proximity:Distant";
+	return (self.latestProximityReading == TRUE) ? @"0" : @"1";
 }
 
 @end

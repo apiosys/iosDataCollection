@@ -343,20 +343,20 @@
 	switch (self.deviceOrientation)
 	{
 		case UIDeviceOrientationPortrait:
-			return @"OrientationPortrait";
+			return @"0";//@"OrientationPortrait";
 		case UIDeviceOrientationPortraitUpsideDown: // Device oriented vertically, home button on the top
-			return @"OrientationPortraitUpsideDown";
+			return @"0";//@"OrientationPortraitUpsideDown";
 		case UIDeviceOrientationLandscapeLeft:     // Device oriented horizontally, home button on the right
-			return @"OrientationLandscapeLeft";
+			return @"1";//@"OrientationLandscapeLeft";
 		case UIDeviceOrientationLandscapeRight:      // Device oriented horizontally, home button on the left
-			return @"OrientationLandscapeRight";
+			return @"1";//@"OrientationLandscapeRight";
 		case UIDeviceOrientationFaceUp:         // Device oriented flat, face up
-			return @"OrientationFlatFaceUp";
+			//return @"OrientationFlatFaceUp";
 		case UIDeviceOrientationFaceDown:             // Device oriented flat, face down
-			return @"OrientationFlatFaceDown";
+			//return @"OrientationFlatFaceDown";
 		case UIDeviceOrientationUnknown:
 		default:
-			return @"OrientationUnknown";
+			return @"-1";//@"OrientationUnknown";
 			break;
 	}
 
