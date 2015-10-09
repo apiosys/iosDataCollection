@@ -127,7 +127,12 @@
 	
 	@try
 	{
-		[self writeCurrentData:[sensorMgr printableString:[self.dtFmtr stringFromDate:[NSDate date]]]];
+		double timestamp = [[NSDate date] timeIntervalSince1970];
+		int64_t timeInMilisInt64 = (int64_t)(timestamp * 1000);
+		
+		NSString *timestampString = [NSString stringWithFormat:@"%lld", timeInMilisInt64];
+		
+		[self writeCurrentData:[sensorMgr printableString:timestampString]];
 	}
 	@catch (NSException *exception)
 	{

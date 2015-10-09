@@ -36,15 +36,11 @@
 -(NSString *)printableAltimiterInfo
 {
 	if(self.altimiterData == nil)
-		return @"-:- -:-";
-	
-	NSString *str = @"Alt:";
+		return @"0 0";
 	
 	//Altitiude in meters
 	//The pressure in kPa.
-	str = [NSString stringWithFormat:@"%.4lf %.4lf", [self.altimiterData.relativeAltitude floatValue], [self.altimiterData.pressure floatValue]];
-
-	return str;
+	return [NSString stringWithFormat:@"%.4lf %.4lf", [self.altimiterData.relativeAltitude floatValue], [self.altimiterData.pressure floatValue]];
 }
 
 -(void)stopAltimiter:(CMMotionManager *)motionMgr

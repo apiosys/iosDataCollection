@@ -27,7 +27,7 @@
 -(NSString *)printableGyroInfo
 {
 	if(self.gyroData == nil)
-		return @"- - -";
+		return @"0 0 0";
 
 	//Rate - Fields, 10, 11, 12
 	return [NSString stringWithFormat:@"%.5lf %.5lf %.5lf",

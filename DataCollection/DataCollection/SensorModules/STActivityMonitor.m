@@ -37,49 +37,62 @@
 
 -(NSString *)printableActivityInfo
 {
-	if(self.latestActivity == nil)
-		return @"-:-";
+	static const int ACTIVITY_UNKNOWN = 0;
+	static const int ACTIVITY_CYCLING = 1;
+	static const int ACTIVITY_WALKING = 2;
+	static const int ACTIVITY_RUNNING = 3;
+	static const int ACTIVITY_CARMODE = 4;
+	static const int ACTIVITY_NO_MOVEMENT = 5;
+	static const int ACTIVITY_CAR_AND_STATIONARY = 6;
 	
-	NSString *strConfidence = @"UnknownConfidence";
+	static const int CONFIDENCE_LOW = 0;
+	static const int CONFIDENCE_MED = 1;
+	static const int CONFIDENCE_HIGH = 2;
+	
+	if(self.latestActivity == nil)
+		return @"0 0";
+	
+	int confidence = 0;
 	switch (self.latestActivity.confidence)
 	{
 		case CMMotionActivityConfidenceLow:
-			strConfidence = @"LowConfidence";
+			confidence = CONFIDENCE_LOW;
 			break;
 		case CMMotionActivityConfidenceMedium:
-			strConfidence = @"MedConfidence";
+			confidence = CONFIDENCE_MED;
 			break;
 		case CMMotionActivityConfidenceHigh:
-			strConfidence = @"HighConfidence";
+			confidence = CONFIDENCE_HIGH;
 			break;
 		default:
 			break;
 	}
 
-	NSString *strEvent= @":";
+	int event = ACTIVITY_UNKNOWN;
 
-	if(self.latestActivity.unknown)
-		strEvent = [strEvent stringByAppendingString:@"EventUnknown"];
+	if(self.latestActivity.unknown == TRUE)
+		event = ACTIVITY_UNKNOWN;
 
-	if(self.latestActivity.stationary)
-		strEvent = [strEvent stringByAppendingString:@"EventStationary"];
+	if(self.latestActivity.automotive == TRUE)
+		event = ACTIVITY_CARMODE;
 
-	if(self.latestActivity.walking)
-		strEvent = [strEvent stringByAppendingString:@"EventWalking"];
+	if(self.latestActivity.cycling == TRUE)
+		event = ACTIVITY_CYCLING;
 
-	if(self.latestActivity.running)
-		strEvent = [strEvent stringByAppendingString:@"EventRunning"];
+	if(self.latestActivity.running == TRUE)
+		event = ACTIVITY_RUNNING;
 
-	if(self.latestActivity.cycling)
-		strEvent = [strEvent stringByAppendingString:@"EventCycling"];
+	if(self.latestActivity.walking == TRUE)
+		event = ACTIVITY_WALKING;
 
-	if(self.latestActivity.automotive)
-		strEvent = [strEvent stringByAppendingString:@"EventAutomotive"];
+	if(self.latestActivity.stationary == TRUE)
+		event = ACTIVITY_NO_MOVEMENT;
 
-	if(strEvent.length <= 1)
-		strEvent = @":EventUnknown";
+	if (self.latestActivity.stationary  == TRUE && self.latestActivity.automotive == TRUE) {
+		event = ACTIVITY_CAR_AND_STATIONARY;
+	}
 
-	return [NSString stringWithFormat:@"%@%@", strConfidence, strEvent];
+	return [NSString stringWithFormat:@"%d %d", event, confidence];
 }
 
 -(void)stopActivityMonitoring

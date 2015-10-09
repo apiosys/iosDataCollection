@@ -36,6 +36,8 @@
 
 -(NSString *)printableProximityInfo
 {
+	// Close to User = 0
+	// Distant = 1
 	return (self.latestProximityReading == TRUE) ? @"0" : @"1";
 }
 
