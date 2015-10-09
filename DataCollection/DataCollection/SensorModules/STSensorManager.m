@@ -322,8 +322,10 @@
 	//https://developer.apple.com/LIBRARY/IOS/documentation/CoreMotion/Reference/CMDeviceMotion_Class/index.html
 	*/
 
-	return [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@\n",
-			  dateString, //-2, -1
+	return [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@\n",
+			  @"0", //-2
+			  @"0", //-1
+			  dateString, //0
 			  self.motionMonitor.printableCalibratedMagnetometerInfo,//1, 2, 3
 			  self.motionMonitor.printableCalibratedAccelerometerInfo,//4, 5, 6,
 			  self.gpsMonitor.printableLocationInfo,//7, 8, 9
@@ -332,10 +334,11 @@
 			  self.magnetrometerMonitor.printableMagnetometerInfo,//16, 17, 18
 			  self.gpsMonitor.printableLocationMetaDataInfo,//19, 20, 21, 22, 23
 			  self.accelMonitor.printableRawAccelerometerInfo,//24, 25, 26
-			  self.activityMonitor.printableActivityInfo,//27
-			  self.proximityMonitor.printableProximityInfo,//28
-			  [self orientationToString], //29
-			  self.altimiterMonitor.printableAltimiterInfo];//30, 31
+			  self.activityMonitor.printableActivityInfo,//27, 28
+			  @"0.0", //29
+			  self.altimiterMonitor.printableAltimiterInfo, // 30, 31
+			  self.proximityMonitor.printableProximityInfo,//32
+			  [self orientationToString]]; //33
 }
 
 -(NSString *)orientationToString
@@ -356,11 +359,9 @@
 			//return @"OrientationFlatFaceDown";
 		case UIDeviceOrientationUnknown:
 		default:
-			return @"-1";//@"OrientationUnknown";
+			return @"2";//@"OrientationUnknown";
 			break;
 	}
-
-	return @"OrientationUnDefined";
 }
 
 @end
