@@ -28,6 +28,8 @@
 {
 	[Fabric with:@[[Crashlytics class]]];
 
+	[UIApplication sharedApplication].idleTimerDisabled = TRUE;
+
 	return YES;
 }
 

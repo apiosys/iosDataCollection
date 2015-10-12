@@ -61,6 +61,7 @@
 -(void)stopGps
 {
 	[self.locMgr stopUpdatingLocation];
+	[self.locMgr stopMonitoringSignificantLocationChanges];
 }
 
 -(BOOL)startUpGps
@@ -77,6 +78,8 @@
 
         if([self.locMgr respondsToSelector:@selector(setAllowsBackgroundLocationUpdates:)] == TRUE)
             self.locMgr.allowsBackgroundLocationUpdates = TRUE;
+		
+		[self.locMgr startMonitoringSignificantLocationChanges];
 
 		self.locMgr.delegate = self;
 		self.locMgr.desiredAccuracy = kCLLocationAccuracyBest;
@@ -101,7 +104,6 @@
 			[self.locMgr requestAlwaysAuthorization];
 		
 		self.locMgr.delegate = self;
-		[self.locMgr startMonitoringSignificantLocationChanges];
 	}
 }
 
