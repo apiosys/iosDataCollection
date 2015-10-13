@@ -27,7 +27,9 @@
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	[Fabric with:@[[Crashlytics class]]];
+	//[Fabric with:@[[Crashlytics]]];
 
+	
 	[UIApplication sharedApplication].idleTimerDisabled = TRUE;
 
 	return YES;
