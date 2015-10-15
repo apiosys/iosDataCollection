@@ -17,6 +17,9 @@ typedef enum
 	@property(nonatomic, strong) NSString *deviceNameStr;
 
 	@property(nonatomic, readonly) FD_TYPE eLoggingType;
+
+	-(NSString*) stringFromVehicleSide:(VehicleSide)side;
+	-(NSString*) stringFromVehicleEnd:(VehicleEnd)end;
 @end
 
 @implementation CMotionLogger
@@ -160,6 +163,75 @@ typedef enum
 	{
 		NSLog(@"Execption on write attempt: %@", exception.debugDescription);
 	}
+}
+
+-(NSString*) stringFromVehicleSide:(VehicleSide)side
+{
+	switch (side)
+	{
+		case VehicleSideLeft:
+			return @"Left";
+		case VehicleSideCenter:
+			return @"Center";
+		case VehicleSideRight:
+			return @"Right";
+		case VehicleSideNotApplicable:
+			return @"N/A";
+	}
+}
+-(NSString*) stringFromVehicleEnd:(VehicleEnd)end
+{
+	switch (end)
+	{
+		case VehicleEndFront:
+			return @"Front";
+		case VehicleEndRear:
+			return @"Rear";
+	}
+}
+
+-(void)logWalkingDevicePositionWithSide:(VehicleSide)side andLocation:(NSString*) location
+{
+	NSString *eventStr = [NSString stringWithFormat:@"NOTICE:WalkingDeviceSide:%@\nNOTICE:WalkingDeviceLocation:%@\n", [self stringFromVehicleSide:side], location];
+	@try
+	{
+		if([self writeCurrentData:eventStr] == FALSE)
+			NSLog(@"Error writing the Walking Device Position information");
+	}
+	@catch (NSException *exception)
+	{
+		NSLog(@"Exception on write attempt: %@", exception.debugDescription);
+	}
+}
+
+-(void)logVehicleDevicePositionWithSide:(VehicleSide)side andLocation:(NSString*) location
+{
+	NSString *eventStr = [NSString stringWithFormat:@"NOTICE:VehicleDeviceSide:%@\nNOTICE:VehicleDeviceLocation:%@\n", [self stringFromVehicleSide:side], location];
+	@try
+	{
+		if([self writeCurrentData:eventStr] == FALSE)
+			NSLog(@"Error writing the Vehicle Device Position information");
+	}
+	@catch (NSException *exception)
+	{
+		NSLog(@"Exception on write attempt: %@", exception.debugDescription);
+	}
+
+}
+
+-(void)logVehicleEntryInformationWithVehicleEnd:(VehicleEnd)end andVehicleSide:(VehicleSide)side
+{
+	NSString *eventStr = [NSString stringWithFormat:@"NOTICE:VehicleEntrySide:%@\nNOTICE:VehicleEntryEnd:%@\n", [self stringFromVehicleSide:side], [self stringFromVehicleEnd:end]];
+	@try
+	{
+		if([self writeCurrentData:eventStr] == FALSE)
+			NSLog(@"Error writing the Vehicle Entry information");
+	}
+	@catch (NSException *exception)
+	{
+		NSLog(@"Exception on write attempt: %@", exception.debugDescription);
+	}
+
 }
 
 -(void)writeCurrentSamplesToLogFile

@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "PhoneInformationDefs.h"
 
 @class CSensorSampleInfoContainer;
 
@@ -15,6 +16,10 @@
 -(void)logPhoneCall:(BOOL)bIsStarting;
 -(void)logUserIsDriver:(BOOL)bUserIsDriver;
 -(void)logGeneralHandling:(BOOL)bIsStarting;
+
+-(void)logWalkingDevicePositionWithSide:(VehicleSide)side andLocation:(NSString*) location;
+-(void)logVehicleDevicePositionWithSide:(VehicleSide)side andLocation:(NSString*) location;
+-(void)logVehicleEntryInformationWithVehicleEnd:(VehicleEnd)end andVehicleSide:(VehicleSide)side;
 
 -(void)writeCurrentSamplesToLogFile;
 -(void)writeLineToLog:(NSString *)lineEntry;
