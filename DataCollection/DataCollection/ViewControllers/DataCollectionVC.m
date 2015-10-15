@@ -17,7 +17,7 @@
 #import "STSensorManager.h"
 
 #import "CMotionLogger.h"
-#import "CPhoneInformationManager.h";
+#import "CPhoneInformationManager.h"
 
 @interface DataCollectionVC ()
 	@property(nonatomic) BOOL bIsRunning;
