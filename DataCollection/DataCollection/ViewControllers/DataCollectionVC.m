@@ -118,8 +118,6 @@
 	
 	// Do any additional setup after loading the view, typically from a nib.
 	self.bIsRunning = FALSE;
-	
-	[[CMotionLogger theLogger] logUserIsDriver:FALSE];
 }
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
