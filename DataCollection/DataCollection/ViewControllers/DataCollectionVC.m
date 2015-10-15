@@ -17,6 +17,7 @@
 #import "STSensorManager.h"
 
 #import "CMotionLogger.h"
+#import "CPhoneInformationManager.h";
 
 @interface DataCollectionVC ()
 	@property(nonatomic) BOOL bIsRunning;
@@ -236,6 +237,7 @@
 	
 	[[CMotionLogger theLogger] markAsStartDataCaptureTime];
 	[[CMotionLogger theLogger] logUserIsDriver:self.userIsDriverSwitch.on];
+	[[CPhoneInformationManager thePhoneInformationManager] logPhoneInformationUsing:[CMotionLogger theLogger]];
 	
 	if ([[STSensorManager theSensorManager] startSensors] == FALSE)
 		NSLog(@"Failed to start all the sensors");

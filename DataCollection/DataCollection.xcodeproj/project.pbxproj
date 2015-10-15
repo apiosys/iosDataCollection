@@ -61,6 +61,8 @@
 		057C47D41BC30C8000517C28 /* STAltimiterMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47D31BC30C8000517C28 /* STAltimiterMonitor.m */; settings = {ASSET_TAGS = (); }; };
 		057C47D51BC30C8000517C28 /* STAltimiterMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47D31BC30C8000517C28 /* STAltimiterMonitor.m */; settings = {ASSET_TAGS = (); }; };
 		057C47D61BC30C8000517C28 /* STAltimiterMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47D31BC30C8000517C28 /* STAltimiterMonitor.m */; settings = {ASSET_TAGS = (); }; };
+		0CA76CB71BCFDBA30028B8B0 /* PhonePositionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA76CB61BCFDBA30028B8B0 /* PhonePositionVC.m */; settings = {ASSET_TAGS = (); }; };
+		0CA76CC71BD0036B0028B8B0 /* CPhoneInformationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA76CC61BD0036B0028B8B0 /* CPhoneInformationManager.m */; settings = {ASSET_TAGS = (); }; };
 		DF067A0806C0DA52A20C118C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D2DF43F621F84767FEDDF5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +135,11 @@
 		057C47CE1BC2F84A00517C28 /* CSensorSampleInfoContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSensorSampleInfoContainer.m; path = DataCollection/GeneralTools/CSensorSampleInfoContainer.m; sourceTree = "<group>"; };
 		057C47D21BC30C8000517C28 /* STAltimiterMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STAltimiterMonitor.h; path = DataCollection/SensorModules/STAltimiterMonitor.h; sourceTree = "<group>"; };
 		057C47D31BC30C8000517C28 /* STAltimiterMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STAltimiterMonitor.m; path = DataCollection/SensorModules/STAltimiterMonitor.m; sourceTree = "<group>"; };
+		0CA76CB51BCFDBA30028B8B0 /* PhonePositionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhonePositionVC.h; path = DataCollection/ViewControllers/PhonePositionVC.h; sourceTree = "<group>"; };
+		0CA76CB61BCFDBA30028B8B0 /* PhonePositionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhonePositionVC.m; path = DataCollection/ViewControllers/PhonePositionVC.m; sourceTree = "<group>"; };
+		0CA76CC51BD0036B0028B8B0 /* CPhoneInformationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPhoneInformationManager.h; path = DataCollection/GeneralTools/CPhoneInformationManager.h; sourceTree = "<group>"; };
+		0CA76CC61BD0036B0028B8B0 /* CPhoneInformationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPhoneInformationManager.m; path = DataCollection/GeneralTools/CPhoneInformationManager.m; sourceTree = "<group>"; };
+		0CA76CCD1BD0263A0028B8B0 /* PhoneInformationDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PhoneInformationDefs.h; path = DataCollection/GeneralTools/PhoneInformationDefs.h; sourceTree = "<group>"; };
 		5D11D4FA8BA7AA4541866A94 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A547DF1CBA4F2B036663A3C4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D3D2DF43F621F84767FEDDF5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +246,8 @@
 				057C47811BC2E9BB00517C28 /* DataCollectionVC.m */,
 				057C47891BC2F6F400517C28 /* BTConnectionVC.h */,
 				057C478A1BC2F6F400517C28 /* BTConnectionVC.m */,
+				0CA76CB51BCFDBA30028B8B0 /* PhonePositionVC.h */,
+				0CA76CB61BCFDBA30028B8B0 /* PhonePositionVC.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -291,6 +300,9 @@
 				057C47C91BC2F82700517C28 /* CMotionLogger.m */,
 				057C47CD1BC2F84A00517C28 /* CSensorSampleInfoContainer.h */,
 				057C47CE1BC2F84A00517C28 /* CSensorSampleInfoContainer.m */,
+				0CA76CC51BD0036B0028B8B0 /* CPhoneInformationManager.h */,
+				0CA76CC61BD0036B0028B8B0 /* CPhoneInformationManager.m */,
+				0CA76CCD1BD0263A0028B8B0 /* PhoneInformationDefs.h */,
 			);
 			name = GeneralTools;
 			sourceTree = "<group>";
@@ -519,6 +531,8 @@
 			files = (
 				057C47CF1BC2F84A00517C28 /* CSensorSampleInfoContainer.m in Sources */,
 				057C47B51BC2F7A700517C28 /* STSensorManager.m in Sources */,
+				0CA76CC71BD0036B0028B8B0 /* CPhoneInformationManager.m in Sources */,
+				0CA76CB71BCFDBA30028B8B0 /* PhonePositionVC.m in Sources */,
 				057C47B21BC2F7A700517C28 /* STProximityMonitor.m in Sources */,
 				057C474E1BC2E90400517C28 /* AppDelegate.m in Sources */,
 				057C47CA1BC2F82700517C28 /* CMotionLogger.m in Sources */,
