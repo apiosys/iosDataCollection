@@ -6,6 +6,8 @@
 
 +(CMotionLogger *)theLogger;
 
+-(void)closeFileDescriptor;
+
 /**
  @param: bIsStarting = TRUE (Starting to type/text) FALSE = Completed your typing/texting
  */

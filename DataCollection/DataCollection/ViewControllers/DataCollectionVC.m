@@ -265,6 +265,8 @@
 	
 	[self.activityWheel stopAnimating];
 	self.btnStopRecording.enabled = self.btnStartRecording.enabled = TRUE;
+	
+	[[CMotionLogger theLogger] closeFileDescriptor];
 }
 
 @end

@@ -65,6 +65,18 @@ typedef enum
 	return loggerMgr;
 }
 
+
+-(void)closeFileDescriptor
+{
+	if(self.fileHandle != nil)
+		[self.fileHandle closeFile];
+	if(self.nativeFileDescriptor > 0)
+		close(_nativeFileDescriptor);
+	
+	self.fileHandle = nil;
+	_nativeFileDescriptor = -1;
+}
+
 -(void)markAsStartDataCaptureTime
 {
 	FD_TYPE eFdType = [self logFileHandleIsValid];

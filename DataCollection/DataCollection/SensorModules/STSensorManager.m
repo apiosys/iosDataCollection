@@ -234,8 +234,8 @@
 	if([self.gpsMonitor startUpGps] == FALSE)
 		NSLog(@"Issue Starting GPS");
 
-	if([self.proximityMonitor startProximitySensor] == FALSE)
-		NSLog(@"Issue Starting the Proximity Sensor");
+//	if([self.proximityMonitor startProximitySensor] == FALSE)
+//		NSLog(@"Issue Starting the Proximity Sensor");
 
 	if([self.activityMonitor startUpActivityMonitoring] == FALSE)
 		NSLog(@"Activity Monitoring not available");

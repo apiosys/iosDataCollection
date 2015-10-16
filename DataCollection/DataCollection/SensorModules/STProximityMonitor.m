@@ -18,7 +18,8 @@
  */
 -(BOOL) latestProximityReading
 {
-	return [UIDevice currentDevice].proximityState;
+	return FALSE;
+	//return [UIDevice currentDevice].proximityState;
 }
 
 -(void)stopProximitySensor
