@@ -18,6 +18,7 @@ typedef enum
 
 	@property(nonatomic, readonly) FD_TYPE eLoggingType;
 
+	-(NSString*) stringFromWalkingSide:(WalkingSide)side;
 	-(NSString*) stringFromVehicleSide:(VehicleSide)side;
 	-(NSString*) stringFromVehicleEnd:(VehicleEnd)end;
 @end
@@ -165,6 +166,19 @@ typedef enum
 	}
 }
 
+-(NSString*) stringFromWalkingSide:(WalkingSide)side
+{
+	switch (side)
+	{
+		case WalkingSideLeft:
+			return @"Left";
+		case WalkingSideRight:
+			return @"Right";
+		case WalkingSideNotApplicable:
+			return @"N/A";
+	}
+}
+
 -(NSString*) stringFromVehicleSide:(VehicleSide)side
 {
 	switch (side)
@@ -175,10 +189,9 @@ typedef enum
 			return @"Center";
 		case VehicleSideRight:
 			return @"Right";
-		case VehicleSideNotApplicable:
-			return @"N/A";
 	}
 }
+
 -(NSString*) stringFromVehicleEnd:(VehicleEnd)end
 {
 	switch (end)
@@ -190,9 +203,9 @@ typedef enum
 	}
 }
 
--(void)logWalkingDevicePositionWithSide:(VehicleSide)side andLocation:(NSString*) location
+-(void)logWalkingDevicePositionWithSide:(WalkingSide)side andLocation:(NSString*) location
 {
-	NSString *eventStr = [NSString stringWithFormat:@"NOTICE:WalkingDeviceSide:%@\nNOTICE:WalkingDeviceLocation:%@\n", [self stringFromVehicleSide:side], location];
+	NSString *eventStr = [NSString stringWithFormat:@"NOTICE:WalkingDeviceSide:%@\nNOTICE:WalkingDeviceLocation:%@\n", [self stringFromWalkingSide:side], location];
 	@try
 	{
 		if([self writeCurrentData:eventStr] == FALSE)

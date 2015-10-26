@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -517,7 +517,7 @@
                                                     <action selector="setLoggingForVehicleEntryInformation:" destination="jUm-4g-cXS" eventType="valueChanged" id="7q0-g6-1cE"/>
                                                 </connections>
                                             </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Entered From" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3an-94-1we">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Entered From" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3an-94-1we">
                                                 <rect key="frame" x="16" y="89" width="73" height="41"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="73" id="pqK-NJ-e8G"/>
@@ -528,18 +528,18 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="tea-mS-0VJ"/>
                                                         <exclude reference="pqK-NJ-e8G"/>
+                                                        <exclude reference="tea-mS-0VJ"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=compact">
                                                     <mask key="constraints">
-                                                        <include reference="tea-mS-0VJ"/>
                                                         <include reference="pqK-NJ-e8G"/>
+                                                        <include reference="tea-mS-0VJ"/>
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FpT-BC-IpU">
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FpT-BC-IpU">
                                                 <rect key="frame" x="109" y="89" width="459" height="29"/>
                                                 <segments>
                                                     <segment title="Front Door"/>
@@ -549,7 +549,7 @@
                                                     <action selector="setVehicleEntryVehicleEnd:" destination="jUm-4g-cXS" eventType="valueChanged" id="AHd-ki-dUL"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PJD-xS-Boq">
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PJD-xS-Boq">
                                                 <rect key="frame" x="109" y="133" width="459" height="29"/>
                                                 <segments>
                                                     <segment title="Left Side"/>
@@ -586,9 +586,9 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="sV1-AO-Xu9"/>
                                                 <exclude reference="4L8-N7-kY1"/>
                                                 <exclude reference="ezJ-0p-TBE"/>
+                                                <exclude reference="sV1-AO-Xu9"/>
                                                 <exclude reference="7i6-Ri-STp"/>
                                                 <exclude reference="C0d-q1-OIf"/>
                                             </mask>

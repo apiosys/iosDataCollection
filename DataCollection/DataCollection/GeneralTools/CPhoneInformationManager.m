@@ -96,7 +96,7 @@ static NSString * const VEHICLE_ENTRY_END_KEY = @"VEHICLE_ENTRY_END_KEY";
 
 	[defaults registerDefaults:@{
 								 WALKING_INCLUDE_IN_LOG_KEY:@NO,
-								 WALKING_SIDE_KEY:[NSNumber numberWithInt:VehicleSideLeft],
+								 WALKING_SIDE_KEY:[NSNumber numberWithInt:WalkingSideLeft],
 								 WALKING_DEVICE_LOCATION_KEY:self.allWalkingDevicePositionLocations.firstObject,
 								 VEHICLE_INCLUDE_IN_LOG_KEY:@NO,
 								 VEHICLE_SIDE_KEY:[NSNumber numberWithInt:VehicleSideLeft],

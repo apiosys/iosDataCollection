@@ -36,19 +36,17 @@
 	NSUInteger walkingSideIndex;
 	switch (manager.walkingDevicePositionSide)
 	{
-		case VehicleSideLeft:
+		case WalkingSideLeft:
 			walkingSideIndex = 0;
 			break;
-		case VehicleSideRight:
+		case WalkingSideRight:
 			walkingSideIndex = 1;
 			break;
-		case VehicleSideNotApplicable:
+		case WalkingSideNotApplicable:
 			walkingSideIndex = 2;
 			break;
-		default:
-			walkingSideIndex = 0;
-			break;
 	}
+
 	self.walkingSideControl.selectedSegmentIndex = walkingSideIndex;
 
 	NSUInteger index = [manager.allWalkingDevicePositionLocations indexOfObject:manager.walkingDevicePositionLocation];
@@ -67,9 +65,6 @@
 			break;
 		case VehicleSideRight:
 			vehicleSideIndex = 2;
-			break;
-		default:
-			vehicleSideIndex = 0;
 			break;
 	}
 	self.vehicleSideControl.selectedSegmentIndex = vehicleSideIndex;
@@ -129,20 +124,21 @@
 
 - (IBAction)setWalkingDevicePositionSide:(UISegmentedControl *)sender
 {
-	VehicleSide side;
+	WalkingSide side;
 	switch (sender.selectedSegmentIndex)
 	{
 		case 0:
-			side = VehicleSideLeft;
+			side = WalkingSideLeft;
 			break;
 		case 1:
-			side = VehicleSideRight;
+			side = WalkingSideRight;
 			break;
 		case 2:
 		default:
-			side = VehicleSideNotApplicable;
+			side = WalkingSideNotApplicable;
 			break;
 	}
+
 	[CPhoneInformationManager thePhoneInformationManager].walkingDevicePositionSide = side;
 }
 
@@ -162,10 +158,8 @@
 			side = VehicleSideCenter;
 			break;
 		case 2:
-			side = VehicleSideRight;
-			break;
 		default:
-			side = VehicleSideNotApplicable;
+			side = VehicleSideRight;
 			break;
 	}
 	[CPhoneInformationManager thePhoneInformationManager].vehicleDevicePositionSide = side;
@@ -203,10 +197,8 @@
 			side = VehicleSideLeft;
 			break;
 		case 1:
-			side = VehicleSideRight;
-			break;
 		default:
-			side = VehicleSideNotApplicable;
+			side = VehicleSideRight;
 			break;
 	}
 

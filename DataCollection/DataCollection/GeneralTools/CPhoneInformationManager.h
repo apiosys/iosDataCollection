@@ -16,7 +16,7 @@
 +(CPhoneInformationManager*) thePhoneInformationManager;
 
 @property(nonatomic) BOOL walkingDevicePositionIncludeInLog;
-@property(nonatomic) VehicleSide walkingDevicePositionSide;
+@property(nonatomic) WalkingSide walkingDevicePositionSide;
 @property(nonatomic) NSString * walkingDevicePositionLocation;
 
 @property(nonatomic) BOOL vehicleDevicePositionIncludeInLog;
