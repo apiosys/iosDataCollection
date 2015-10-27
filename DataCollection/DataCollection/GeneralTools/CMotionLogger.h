@@ -7,6 +7,8 @@
 
 +(CMotionLogger *)theLogger;
 
+@property(nonatomic, readonly) BOOL isLogging;
+
 -(void)closeFileDescriptor;
 
 /**
@@ -17,9 +19,12 @@
 -(void)logUserIsDriver:(BOOL)bUserIsDriver;
 -(void)logGeneralHandling:(BOOL)bIsStarting;
 
--(void)logWalkingDevicePositionWithSide:(WalkingSide)side andLocation:(NSString*) location;
--(void)logVehicleDevicePositionWithSide:(VehicleSide)side andLocation:(NSString*) location;
--(void)logVehicleEntryInformationWithVehicleEnd:(VehicleEnd)end andVehicleSide:(VehicleSide)side;
+-(void)logWalkingDeviceSide:(WalkingSide)side;
+-(void)logWalkingDeviceLocation:(NSString*) location;
+-(void)logVehicleDeviceSide:(VehicleSide)side;
+-(void)logVehicleDeviceLocation:(NSString*) location;
+-(void)logVehicleEntryVehicleEnd:(VehicleEnd)end;
+-(void)logVehicleEntryVehicleSide:(VehicleSide)side;
 
 -(void)writeCurrentSamplesToLogFile;
 -(void)writeLineToLog:(NSString *)lineEntry;

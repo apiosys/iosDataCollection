@@ -295,7 +295,7 @@
                         <sections>
                             <tableViewSection headerTitle="Walking Device Position" id="43d-8i-U2L">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AaB-lr-gDM">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="AaB-lr-gDM">
                                         <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AaB-lr-gDM" id="Eiw-hS-saM">
@@ -326,15 +326,18 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GWm-iC-vQe">
-                                        <rect key="frame" x="0.0" y="158" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="GWm-iC-vQe">
+                                        <rect key="frame" x="0.0" y="158" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GWm-iC-vQe" id="dWj-xm-hUK">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="P7k-Es-AEy">
-                                                    <rect key="frame" x="8" y="8" width="584" height="29"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="5B3-Ie-c3y"/>
+                                                    </constraints>
                                                     <segments>
                                                         <segment title="Left"/>
                                                         <segment title="Right"/>
@@ -352,8 +355,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="DyN-4P-zOq" detailTextLabel="lBQ-rx-fCz" style="IBUITableViewCellStyleValue1" id="lQ5-dm-svI">
-                                        <rect key="frame" x="0.0" y="202" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="DyN-4P-zOq" detailTextLabel="lBQ-rx-fCz" style="IBUITableViewCellStyleValue1" id="lQ5-dm-svI">
+                                        <rect key="frame" x="0.0" y="218" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lQ5-dm-svI" id="XSa-K5-jmV">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -383,8 +386,8 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Vehicle Device Position" id="cUu-PU-r0E">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fhb-Yn-cJh">
-                                        <rect key="frame" x="0.0" y="297" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Fhb-Yn-cJh">
+                                        <rect key="frame" x="0.0" y="313" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fhb-Yn-cJh" id="v0b-ZV-6Il">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -417,15 +420,18 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Oh8-1F-oWa">
-                                        <rect key="frame" x="0.0" y="341" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="Oh8-1F-oWa">
+                                        <rect key="frame" x="0.0" y="357" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oh8-1F-oWa" id="sLc-My-tO6">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gHz-jo-Oek">
-                                                    <rect key="frame" x="8" y="8" width="584" height="29"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="6FN-iA-7At"/>
+                                                    </constraints>
                                                     <segments>
                                                         <segment title="Left"/>
                                                         <segment title="Center"/>
@@ -443,8 +449,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="qxh-Ws-84h" detailTextLabel="I4L-gu-k9S" style="IBUITableViewCellStyleValue1" id="AxK-ut-3qg">
-                                        <rect key="frame" x="0.0" y="385" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="qxh-Ws-84h" detailTextLabel="I4L-gu-k9S" style="IBUITableViewCellStyleValue1" id="AxK-ut-3qg">
+                                        <rect key="frame" x="0.0" y="417" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AxK-ut-3qg" id="YS4-vK-tKO">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -474,8 +480,8 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Vehicle Entry Information" id="AWx-aT-GaX">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WDz-b1-GH9">
-                                        <rect key="frame" x="0.0" y="480" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="WDz-b1-GH9">
+                                        <rect key="frame" x="0.0" y="512" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WDz-b1-GH9" id="ycv-wn-HD0">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -487,8 +493,8 @@
                                                         <action selector="setLoggingForVehicleEntryInformation:" destination="2JT-53-EBk" eventType="valueChanged" id="NwP-g1-upA"/>
                                                     </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enable Vehicle Entry Logging" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKH-oP-q9m">
-                                                    <rect key="frame" x="8" y="13" width="314" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Vehicle Entry Logging" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKH-oP-q9m">
+                                                    <rect key="frame" x="8" y="13" width="222" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -502,15 +508,18 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="94" id="gLG-tG-B4m">
-                                        <rect key="frame" x="0.0" y="524" width="600" height="94"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="120" id="gLG-tG-B4m">
+                                        <rect key="frame" x="0.0" y="556" width="600" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gLG-tG-B4m" id="UK2-ee-LGt">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="93"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hdX-F5-gIY">
-                                                    <rect key="frame" x="308" y="8" width="284" height="29"/>
+                                                    <rect key="frame" x="206" y="8" width="386" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="o02-ts-EG7"/>
+                                                    </constraints>
                                                     <segments>
                                                         <segment title="First"/>
                                                         <segment title="Back Door"/>
@@ -519,8 +528,17 @@
                                                         <action selector="setVehicleEntryVehicleEnd:" destination="2JT-53-EBk" eventType="valueChanged" id="CFA-MH-4ap"/>
                                                     </connections>
                                                 </segmentedControl>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Entered From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="625-cc-GbB">
+                                                    <rect key="frame" x="8" y="19" width="182" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R5G-8m-rfN">
-                                                    <rect key="frame" x="308" y="52" width="284" height="29"/>
+                                                    <rect key="frame" x="206" y="68" width="386" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="4VW-Bf-egj"/>
+                                                    </constraints>
                                                     <segments>
                                                         <segment title="Left Side"/>
                                                         <segment title="Right Side"/>
@@ -529,12 +547,6 @@
                                                         <action selector="setVehicleEntryVehicleSide:" destination="2JT-53-EBk" eventType="valueChanged" id="cTa-W8-9sL"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Entered From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="625-cc-GbB">
-                                                    <rect key="frame" x="8" y="11" width="284" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="R5G-8m-rfN" firstAttribute="top" secondItem="hdX-F5-gIY" secondAttribute="bottom" constant="16" id="2Og-Bt-fxh"/>
@@ -543,8 +555,8 @@
                                                 <constraint firstItem="hdX-F5-gIY" firstAttribute="baseline" secondItem="625-cc-GbB" secondAttribute="baseline" id="Fiv-ly-9Sh"/>
                                                 <constraint firstItem="R5G-8m-rfN" firstAttribute="leading" secondItem="hdX-F5-gIY" secondAttribute="leading" id="G8J-zz-9e6"/>
                                                 <constraint firstItem="R5G-8m-rfN" firstAttribute="leading" secondItem="625-cc-GbB" secondAttribute="leading" id="I2w-2A-oKx"/>
-                                                <constraint firstItem="hdX-F5-gIY" firstAttribute="centerX" secondItem="UK2-ee-LGt" secondAttribute="centerX" multiplier="1.5" id="O1K-Bn-rsk"/>
-                                                <constraint firstItem="625-cc-GbB" firstAttribute="centerX" secondItem="UK2-ee-LGt" secondAttribute="centerX" multiplier="0.5" id="QnQ-Zj-Cyh"/>
+                                                <constraint firstItem="hdX-F5-gIY" firstAttribute="centerX" secondItem="UK2-ee-LGt" secondAttribute="centerX" multiplier="1.33" id="O1K-Bn-rsk"/>
+                                                <constraint firstItem="625-cc-GbB" firstAttribute="centerX" secondItem="UK2-ee-LGt" secondAttribute="centerX" multiplier="0.33" id="QnQ-Zj-Cyh"/>
                                                 <constraint firstItem="R5G-8m-rfN" firstAttribute="trailing" secondItem="hdX-F5-gIY" secondAttribute="trailing" id="SMd-ZK-ydY"/>
                                                 <constraint firstItem="R5G-8m-rfN" firstAttribute="trailing" secondItem="625-cc-GbB" secondAttribute="trailing" id="Scp-FJ-huj"/>
                                                 <constraint firstItem="R5G-8m-rfN" firstAttribute="top" secondItem="625-cc-GbB" secondAttribute="bottom" constant="16" id="Sf1-NL-JTC"/>

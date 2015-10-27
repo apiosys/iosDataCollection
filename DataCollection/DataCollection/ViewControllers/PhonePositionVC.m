@@ -9,6 +9,7 @@
 #import "PhonePositionVC.h"
 #import "CPhoneInformationManager.h"
 #import "DeviceLocationTVC.h"
+#import "CMotionLogger.h"
 
 @interface PhonePositionVC ()
 	@property (weak, nonatomic) IBOutlet UISwitch *logWalkingSwitch;
@@ -35,7 +36,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 	CPhoneInformationManager * manager = [CPhoneInformationManager thePhoneInformationManager];
-	self.logWalkingSwitch.on = manager.walkingDevicePositionIncludeInLog;
+	self.logWalkingSwitch.on = manager.enableLoggingOfWalkingDevicePosition;
 
 	NSUInteger walkingSideIndex;
 	switch (manager.walkingDevicePositionSide)
@@ -54,7 +55,7 @@
 	self.walkingSideControl.selectedSegmentIndex = walkingSideIndex;
 	self.walkingLocationDetailLabel.text = manager.walkingDevicePositionLocation;
 
-	self.logVehicleSwitch.on = manager.vehicleDevicePositionIncludeInLog;
+	self.logVehicleSwitch.on = manager.enableLoggingOfVehicleDevicePosition;
 
 	NSUInteger vehicleSideIndex;
 	switch (manager.vehicleDevicePositionSide)
@@ -73,7 +74,7 @@
 
 	self.vehicleLocationDetailLabel.text = manager.vehicleDevicePositionLocation;
 
-	self.logVehicleEntrySwitch.on = manager.vehicleEntryInformationIncludeInLog;
+	self.logVehicleEntrySwitch.on = manager.enableLoggingOfVehicleEntryInformation;
 
 	NSUInteger vehicleEntrySide;
 	switch (manager.vehicleEntryInformationVehicleSide)
@@ -121,9 +122,18 @@
 
 - (IBAction)setLoggingForWalkingPosition:(UISwitch*)sender
 {
-	[self.tableView beginUpdates];
-	[CPhoneInformationManager thePhoneInformationManager].walkingDevicePositionIncludeInLog = sender.on;
-	[self.tableView endUpdates];
+	CPhoneInformationManager * manager = [CPhoneInformationManager thePhoneInformationManager];
+	manager.enableLoggingOfWalkingDevicePosition = sender.on;
+
+	if (sender.on)
+	{
+		CMotionLogger * logger = [CMotionLogger theLogger];
+		if ([logger isLogging])
+		{
+			[logger logWalkingDeviceSide:manager.walkingDevicePositionSide];
+			[logger logWalkingDeviceLocation:manager.walkingDevicePositionLocation];
+		}
+	}
 }
 
 - (IBAction)setWalkingDevicePositionSide:(UISegmentedControl *)sender
@@ -143,14 +153,33 @@
 			break;
 	}
 
-	[CPhoneInformationManager thePhoneInformationManager].walkingDevicePositionSide = side;
+	CPhoneInformationManager * manager = [CPhoneInformationManager thePhoneInformationManager];
+	manager.walkingDevicePositionSide = side;
+	if(manager.enableLoggingOfWalkingDevicePosition)
+	{
+		CMotionLogger * logger = [CMotionLogger theLogger];
+		if ([logger isLogging])
+		{
+			[logger logWalkingDeviceSide:side];
+		}
+	}
+
 }
 
 - (IBAction)setLoggingForVehiclePosition:(UISwitch*)sender
 {
-	[self.tableView beginUpdates];
-	[CPhoneInformationManager thePhoneInformationManager].vehicleDevicePositionIncludeInLog = sender.on;
-	[self.tableView endUpdates];
+	CPhoneInformationManager * manager = [CPhoneInformationManager thePhoneInformationManager];
+	manager.enableLoggingOfVehicleDevicePosition = sender.on;
+
+	if (sender.on)
+	{
+		CMotionLogger * logger = [CMotionLogger theLogger];
+		if ([logger isLogging])
+		{
+			[logger logVehicleDeviceSide:manager.vehicleDevicePositionSide];
+			[logger logVehicleDeviceLocation:manager.vehicleDevicePositionLocation];
+		}
+	}
 }
 - (IBAction)setVehicleDevicePositionSide:(UISegmentedControl *)sender
 {
@@ -168,14 +197,33 @@
 			side = VehicleSideRight;
 			break;
 	}
-	[CPhoneInformationManager thePhoneInformationManager].vehicleDevicePositionSide = side;
+	CPhoneInformationManager * manager = [CPhoneInformationManager thePhoneInformationManager];
+	manager.vehicleDevicePositionSide = side;
+	if (manager.enableLoggingOfVehicleDevicePosition)
+	{
+		CMotionLogger * logger = [CMotionLogger theLogger];
+		if ([logger isLogging])
+		{
+			[logger logVehicleDeviceSide:side];
+		}
+	}
 }
 
 - (IBAction)setLoggingForVehicleEntryInformation:(UISwitch*)sender
 {
-	[self.tableView beginUpdates];
-	[CPhoneInformationManager thePhoneInformationManager].vehicleEntryInformationIncludeInLog = sender.on;
-	[self.tableView endUpdates];
+	CPhoneInformationManager * manager = [CPhoneInformationManager thePhoneInformationManager ];
+	manager.enableLoggingOfVehicleEntryInformation = sender.on;
+
+	if (sender.on)
+	{
+		CMotionLogger * logger = [CMotionLogger theLogger];
+		if ([logger isLogging])
+		{
+			[logger logVehicleEntryVehicleEnd:manager.vehicleEntryInformationVehicleEnd];
+			[logger logVehicleEntryVehicleSide:manager.vehicleEntryInformationVehicleSide];
+		}
+	}
+
 }
 
 - (IBAction)setVehicleEntryVehicleEnd:(UISegmentedControl *)sender
@@ -193,7 +241,17 @@
 			end = VehicleEndFront;
 			break;
 	}
-	[CPhoneInformationManager thePhoneInformationManager].vehicleEntryInformationVehicleEnd = end;
+	CPhoneInformationManager * manager = [CPhoneInformationManager thePhoneInformationManager];
+	manager.vehicleEntryInformationVehicleEnd = end;
+
+	if (manager.enableLoggingOfVehicleEntryInformation)
+	{
+		CMotionLogger * logger = [CMotionLogger theLogger];
+		if ([logger isLogging])
+		{
+			[logger logVehicleEntryVehicleEnd:end];
+		}
+	}
 }
 
 - (IBAction)setVehicleEntryVehicleSide:(UISegmentedControl *)sender
@@ -210,7 +268,17 @@
 			break;
 	}
 
-	[CPhoneInformationManager thePhoneInformationManager].vehicleEntryInformationVehicleSide = side;
+	CPhoneInformationManager * manager = [CPhoneInformationManager thePhoneInformationManager];
+	manager.vehicleEntryInformationVehicleSide = side;
+
+	if (manager.enableLoggingOfVehicleEntryInformation)
+	{
+		CMotionLogger * logger = [CMotionLogger theLogger];
+		if ([logger isLogging])
+		{
+			[logger logVehicleEntryVehicleSide:side];
+		}
+	}
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -244,34 +312,29 @@
 
 -(IBAction) unwindFromDeviceLocationSegue:(UIStoryboardSegue *)segue
 {
+	CPhoneInformationManager * manager = [CPhoneInformationManager thePhoneInformationManager];
+	CMotionLogger * logger = [CMotionLogger theLogger];
+
 	if ([segue.identifier isEqualToString:@"WalkingDeviceLocationUnwindSegue"])
 	{
 		DeviceLocationTVC * deviceLocationController = segue.sourceViewController;
 		NSString * selectedLocation = deviceLocationController.selectedLocation;
-		[CPhoneInformationManager thePhoneInformationManager].walkingDevicePositionLocation = selectedLocation;
+		manager.walkingDevicePositionLocation = selectedLocation;
 		self.walkingLocationDetailLabel.text = selectedLocation;
+		if (manager.enableLoggingOfWalkingDevicePosition && logger.isLogging) {
+			[logger logWalkingDeviceLocation:selectedLocation];
+		}
 	}
 	else if ([segue.identifier isEqualToString:@"VehicleDeviceLocationUnwindSegue"])
 	{
 		DeviceLocationTVC * deviceLocationController = segue.sourceViewController;
 		NSString * selectedLocation = deviceLocationController.selectedLocation;
-		[CPhoneInformationManager thePhoneInformationManager].vehicleDevicePositionLocation = selectedLocation;
+		manager.vehicleDevicePositionLocation = selectedLocation;
 		self.vehicleLocationDetailLabel.text = selectedLocation;
+		if (manager.enableLoggingOfVehicleDevicePosition && logger.isLogging) {
+			[logger logVehicleDeviceLocation:selectedLocation];
+		}
 	}
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	if (indexPath.section == 0 && indexPath.row != 0 && self.logWalkingSwitch.on == FALSE)
-		return 0;
-
-	if (indexPath.section == 1 && indexPath.row != 0 && self.logVehicleSwitch.on == FALSE)
-		return 0;
-
-	if (indexPath.section == 2 && indexPath.row != 0 && self.logVehicleEntrySwitch.on == FALSE)
-		return 0;
-
-	return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
 @end

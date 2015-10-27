@@ -235,7 +235,7 @@
 	
 	[[CMotionLogger theLogger] markAsStartDataCaptureTime];
 	[[CMotionLogger theLogger] logUserIsDriver:self.userIsDriverSwitch.on];
-	[[CPhoneInformationManager thePhoneInformationManager] logPhoneInformationUsing:[CMotionLogger theLogger]];
+	[[CPhoneInformationManager thePhoneInformationManager] logPhoneInformation];
 	
 	if ([[STSensorManager theSensorManager] startSensors] == FALSE)
 		NSLog(@"Failed to start all the sensors");

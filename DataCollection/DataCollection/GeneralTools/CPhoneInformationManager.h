@@ -15,23 +15,23 @@
 
 +(CPhoneInformationManager*) thePhoneInformationManager;
 
-@property(nonatomic) BOOL walkingDevicePositionIncludeInLog;
+@property(nonatomic) BOOL enableLoggingOfWalkingDevicePosition;
 @property(nonatomic) WalkingSide walkingDevicePositionSide;
 @property(nonatomic) NSString * walkingDevicePositionLocation;
 
-@property(nonatomic) BOOL vehicleDevicePositionIncludeInLog;
+@property(nonatomic) BOOL enableLoggingOfVehicleDevicePosition;
 @property(nonatomic) VehicleSide vehicleDevicePositionSide;
 @property(nonatomic) NSString * vehicleDevicePositionLocation;
 
 
-@property(nonatomic) BOOL vehicleEntryInformationIncludeInLog;
+@property(nonatomic) BOOL enableLoggingOfVehicleEntryInformation;
 @property(nonatomic) VehicleEnd vehicleEntryInformationVehicleEnd;
 @property(nonatomic) VehicleSide vehicleEntryInformationVehicleSide;
 
 -(NSArray*) allWalkingDevicePositionLocations;
 -(NSArray*) allVehicleDevicePositionLocations;
 
--(void) logPhoneInformationUsing:(CMotionLogger*) logger;
+-(void) logPhoneInformation;
 
 -(BOOL) saveData;
 
