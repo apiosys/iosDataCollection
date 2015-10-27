@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PhonePositionVC : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface PhonePositionVC : UITableViewController<UITableViewDelegate>
 
 - (IBAction)setLoggingForWalkingPosition:(id)sender;
 - (IBAction)setLoggingForVehiclePosition:(id)sender;

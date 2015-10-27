@@ -8,14 +8,18 @@
 
 #import "PhonePositionVC.h"
 #import "CPhoneInformationManager.h"
+#import "DeviceLocationTVC.h"
 
 @interface PhonePositionVC ()
 	@property (weak, nonatomic) IBOutlet UISwitch *logWalkingSwitch;
 	@property (weak, nonatomic) IBOutlet UISegmentedControl *walkingSideControl;
-	@property (weak, nonatomic) IBOutlet UIPickerView *walkingDeviceLocationPicker;
+	@property (weak, nonatomic) IBOutlet UILabel *walkingLocationDetailLabel;
+
+
 	@property (weak, nonatomic) IBOutlet UISwitch *logVehicleSwitch;
 	@property (weak, nonatomic) IBOutlet UISegmentedControl *vehicleSideControl;
-	@property (weak, nonatomic) IBOutlet UIPickerView *vehicleDeviceLocationPicker;
+	@property (weak, nonatomic) IBOutlet UILabel *vehicleLocationDetailLabel;
+	
 	@property (weak, nonatomic) IBOutlet UISwitch *logVehicleEntrySwitch;
 	@property (weak, nonatomic) IBOutlet UISegmentedControl *vehicleEntrySideControl;
 	@property (weak, nonatomic) IBOutlet UISegmentedControl *vehicleEntryEndControl;
@@ -28,7 +32,7 @@
     [super viewDidLoad];
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
 	CPhoneInformationManager * manager = [CPhoneInformationManager thePhoneInformationManager];
 	self.logWalkingSwitch.on = manager.walkingDevicePositionIncludeInLog;
@@ -48,9 +52,7 @@
 	}
 
 	self.walkingSideControl.selectedSegmentIndex = walkingSideIndex;
-
-	NSUInteger index = [manager.allWalkingDevicePositionLocations indexOfObject:manager.walkingDevicePositionLocation];
-	[self.walkingDeviceLocationPicker selectRow:index inComponent:0 animated:animated];
+	self.walkingLocationDetailLabel.text = manager.walkingDevicePositionLocation;
 
 	self.logVehicleSwitch.on = manager.vehicleDevicePositionIncludeInLog;
 
@@ -69,8 +71,7 @@
 	}
 	self.vehicleSideControl.selectedSegmentIndex = vehicleSideIndex;
 
-	index = [manager .allVehicleDevicePositionLocations indexOfObject:manager.vehicleDevicePositionLocation];
-	[self.vehicleDeviceLocationPicker selectRow:index inComponent:0 animated:animated];
+	self.vehicleLocationDetailLabel.text = manager.vehicleDevicePositionLocation;
 
 	self.logVehicleEntrySwitch.on = manager.vehicleEntryInformationIncludeInLog;
 
@@ -105,6 +106,7 @@
 	self.vehicleEntryEndControl.selectedSegmentIndex = vehicleEntryEnd;
 
 	[super viewDidAppear:animated];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,7 +121,9 @@
 
 - (IBAction)setLoggingForWalkingPosition:(UISwitch*)sender
 {
+	[self.tableView beginUpdates];
 	[CPhoneInformationManager thePhoneInformationManager].walkingDevicePositionIncludeInLog = sender.on;
+	[self.tableView endUpdates];
 }
 
 - (IBAction)setWalkingDevicePositionSide:(UISegmentedControl *)sender
@@ -144,7 +148,9 @@
 
 - (IBAction)setLoggingForVehiclePosition:(UISwitch*)sender
 {
+	[self.tableView beginUpdates];
 	[CPhoneInformationManager thePhoneInformationManager].vehicleDevicePositionIncludeInLog = sender.on;
+	[self.tableView endUpdates];
 }
 - (IBAction)setVehicleDevicePositionSide:(UISegmentedControl *)sender
 {
@@ -167,7 +173,9 @@
 
 - (IBAction)setLoggingForVehicleEntryInformation:(UISwitch*)sender
 {
+	[self.tableView beginUpdates];
 	[CPhoneInformationManager thePhoneInformationManager].vehicleEntryInformationIncludeInLog = sender.on;
+	[self.tableView endUpdates];
 }
 
 - (IBAction)setVehicleEntryVehicleEnd:(UISegmentedControl *)sender
@@ -205,6 +213,11 @@
 	[CPhoneInformationManager thePhoneInformationManager].vehicleEntryInformationVehicleSide = side;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 #pragma mark - UIPickerView DataSource methods
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -212,49 +225,53 @@
 	return 1;
 }
 
--(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	if (pickerView == self.walkingDeviceLocationPicker)
+	if ([segue.identifier isEqualToString:@"WalkingDeviceLocationSegue"])
 	{
-		return [CPhoneInformationManager thePhoneInformationManager].allWalkingDevicePositionLocations.count;
+		DeviceLocationTVC * deviceLocationController = segue.destinationViewController;
+		deviceLocationController.deviceLocations = [CPhoneInformationManager thePhoneInformationManager].allWalkingDevicePositionLocations;
+		deviceLocationController.selectedLocation =[CPhoneInformationManager thePhoneInformationManager].walkingDevicePositionLocation;
 	}
-	else if (pickerView == self.vehicleDeviceLocationPicker)
+	else if ([segue.identifier isEqualToString:@"VehicleDeviceLocationSegue"])
 	{
-		return [CPhoneInformationManager thePhoneInformationManager].allVehicleDevicePositionLocations.count;
+		DeviceLocationTVC * deviceLocationController = segue.destinationViewController;
+		deviceLocationController.deviceLocations = [CPhoneInformationManager thePhoneInformationManager].allVehicleDevicePositionLocations;
+		deviceLocationController.selectedLocation =[CPhoneInformationManager thePhoneInformationManager].vehicleDevicePositionLocation;
 	}
-	else
+}
+
+-(IBAction) unwindFromDeviceLocationSegue:(UIStoryboardSegue *)segue
+{
+	if ([segue.identifier isEqualToString:@"WalkingDeviceLocationUnwindSegue"])
 	{
+		DeviceLocationTVC * deviceLocationController = segue.sourceViewController;
+		NSString * selectedLocation = deviceLocationController.selectedLocation;
+		[CPhoneInformationManager thePhoneInformationManager].walkingDevicePositionLocation = selectedLocation;
+		self.walkingLocationDetailLabel.text = selectedLocation;
+	}
+	else if ([segue.identifier isEqualToString:@"VehicleDeviceLocationUnwindSegue"])
+	{
+		DeviceLocationTVC * deviceLocationController = segue.sourceViewController;
+		NSString * selectedLocation = deviceLocationController.selectedLocation;
+		[CPhoneInformationManager thePhoneInformationManager].vehicleDevicePositionLocation = selectedLocation;
+		self.vehicleLocationDetailLabel.text = selectedLocation;
+	}
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (indexPath.section == 0 && indexPath.row != 0 && self.logWalkingSwitch.on == FALSE)
 		return 0;
-	}
+
+	if (indexPath.section == 1 && indexPath.row != 0 && self.logVehicleSwitch.on == FALSE)
+		return 0;
+
+	if (indexPath.section == 2 && indexPath.row != 0 && self.logVehicleEntrySwitch.on == FALSE)
+		return 0;
+
+	return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
-#pragma mark - UIPickerViewDelegate methods
-
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-	if (pickerView == self.walkingDeviceLocationPicker)
-	{
-		return [[CPhoneInformationManager thePhoneInformationManager].allWalkingDevicePositionLocations objectAtIndex:row];
-	}
-	else if (pickerView == self.vehicleDeviceLocationPicker)
-	{
-		return [[CPhoneInformationManager thePhoneInformationManager].allVehicleDevicePositionLocations objectAtIndex:row];
-	}
-
-	return nil;
-}
-
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-	CPhoneInformationManager* manager = [CPhoneInformationManager thePhoneInformationManager];
-
-	if (pickerView == self.walkingDeviceLocationPicker)
-	{
-		manager.walkingDevicePositionLocation = [manager.allWalkingDevicePositionLocations objectAtIndex:row];
-	}
-	else if (pickerView == self.vehicleDeviceLocationPicker)
-	{
-		manager.vehicleDevicePositionLocation = [manager.allVehicleDevicePositionLocations objectAtIndex:row];
-	}
-}
 @end
