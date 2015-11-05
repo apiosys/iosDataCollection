@@ -17,6 +17,7 @@
 #import "STSensorManager.h"
 
 #import "CMotionLogger.h"
+#import "CPhoneInformationManager.h"
 
 @interface DataCollectionVC ()
 	@property(nonatomic) BOOL bIsRunning;
@@ -117,8 +118,6 @@
 	
 	// Do any additional setup after loading the view, typically from a nib.
 	self.bIsRunning = FALSE;
-	
-	[[CMotionLogger theLogger] logUserIsDriver:FALSE];
 }
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -236,6 +235,7 @@
 	
 	[[CMotionLogger theLogger] markAsStartDataCaptureTime];
 	[[CMotionLogger theLogger] logUserIsDriver:self.userIsDriverSwitch.on];
+	[[CPhoneInformationManager thePhoneInformationManager] logPhoneInformation];
 	
 	if ([[STSensorManager theSensorManager] startSensors] == FALSE)
 		NSLog(@"Failed to start all the sensors");

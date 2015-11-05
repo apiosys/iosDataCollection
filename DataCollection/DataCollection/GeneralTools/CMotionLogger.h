@@ -1,10 +1,13 @@
 #import <Foundation/Foundation.h>
+#import "PhoneInformationDefs.h"
 
 @class CSensorSampleInfoContainer;
 
 @interface CMotionLogger : NSObject
 
 +(CMotionLogger *)theLogger;
+
+@property(nonatomic, readonly) BOOL isLogging;
 
 -(void)closeFileDescriptor;
 
@@ -15,6 +18,13 @@
 -(void)logPhoneCall:(BOOL)bIsStarting;
 -(void)logUserIsDriver:(BOOL)bUserIsDriver;
 -(void)logGeneralHandling:(BOOL)bIsStarting;
+
+-(void)logWalkingDeviceSide:(WalkingSide)side;
+-(void)logWalkingDeviceLocation:(NSString*) location;
+-(void)logVehicleDeviceSide:(VehicleSide)side;
+-(void)logVehicleDeviceLocation:(NSString*) location;
+-(void)logVehicleEntryVehicleEnd:(VehicleEnd)end;
+-(void)logVehicleEntryVehicleSide:(VehicleSide)side;
 
 -(void)writeCurrentSamplesToLogFile;
 -(void)writeLineToLog:(NSString *)lineEntry;
