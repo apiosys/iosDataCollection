@@ -17,6 +17,7 @@
 #import "STSensorManager.h"
 
 #import "CMotionLogger.h"
+#import "CPhoneInformationManager.h"
 
 @interface DataCollectionVC ()
 	@property(nonatomic) BOOL bIsRunning;
@@ -44,7 +45,6 @@
 	-(IBAction)onGeneralHandling:(UIButton *)sender;
 	-(IBAction)onUserIsDriverSwitch:(UISwitch *)sender;
 	-(IBAction)onPhoneCallSimulation:(UIButton *)sender;
-	-(IBAction)onConnectToBTLEDevice:(UIButton *)sender;
 @end
 
 @implementation DataCollectionVC
@@ -118,8 +118,6 @@
 	
 	// Do any additional setup after loading the view, typically from a nib.
 	self.bIsRunning = FALSE;
-	
-	[[CMotionLogger theLogger] logUserIsDriver:FALSE];
 }
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -172,13 +170,6 @@
 		btn.layer.borderColor = [UIColor blackColor].CGColor;
 		btn.backgroundColor = self.inactiveButtonColor;
 	}
-}
-
--(IBAction)onConnectToBTLEDevice:(UIButton *)sender
-{
-	//CBtleConnectionViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"btleavailabledevicesvc"];
-	
-	//[self.navigationController pushViewController:vc animated:YES];
 }
 
 -(IBAction)onUserIsDriverSwitch:(UISwitch *)sender
@@ -244,6 +235,7 @@
 	
 	[[CMotionLogger theLogger] markAsStartDataCaptureTime];
 	[[CMotionLogger theLogger] logUserIsDriver:self.userIsDriverSwitch.on];
+	[[CPhoneInformationManager thePhoneInformationManager] logPhoneInformation];
 	
 	if ([[STSensorManager theSensorManager] startSensors] == FALSE)
 		NSLog(@"Failed to start all the sensors");
@@ -273,6 +265,8 @@
 	
 	[self.activityWheel stopAnimating];
 	self.btnStopRecording.enabled = self.btnStartRecording.enabled = TRUE;
+	
+	[[CMotionLogger theLogger] closeFileDescriptor];
 }
 
 @end

@@ -36,7 +36,7 @@
 -(NSString *)printableLocationInfo
 {
 	if(self.locMgr.location == nil)
-		return @"- - -";
+		return @"0 0 0";
 
 	//Lat lon alt - Fields 7, 8, 9
 	return [NSString stringWithFormat:@"%.5lf %.5lf %.5lf",
@@ -48,19 +48,20 @@
 -(NSString *)printableLocationMetaDataInfo
 {
 	if(self.locMgr.location == nil)
-		return @"- - - - -";
+		return @"0 0 0 0 0.0";
 
 	//... - Fields 19, 20, 21, 22, 23
 	return [NSString stringWithFormat:@"%.5lf %.5lf %.5lf %.5lf 0.0",
 			  [self.locMgr.location.timestamp timeIntervalSince1970],
 			  self.locMgr.location.horizontalAccuracy,
 			  self.locMgr.location.verticalAccuracy,
-			  self.locMgr.location.speed];
+			  self.locMgr.location.speed]; // 0.0 at the end is Acceleration
 }
 
 -(void)stopGps
 {
 	[self.locMgr stopUpdatingLocation];
+	[self.locMgr stopMonitoringSignificantLocationChanges];
 }
 
 -(BOOL)startUpGps
@@ -77,6 +78,8 @@
 
         if([self.locMgr respondsToSelector:@selector(setAllowsBackgroundLocationUpdates:)] == TRUE)
             self.locMgr.allowsBackgroundLocationUpdates = TRUE;
+		
+		[self.locMgr startMonitoringSignificantLocationChanges];
 
 		self.locMgr.delegate = self;
 		self.locMgr.desiredAccuracy = kCLLocationAccuracyBest;
@@ -101,7 +104,6 @@
 			[self.locMgr requestAlwaysAuthorization];
 		
 		self.locMgr.delegate = self;
-		[self.locMgr startMonitoringSignificantLocationChanges];
 	}
 }
 

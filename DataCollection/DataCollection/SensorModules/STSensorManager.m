@@ -234,8 +234,8 @@
 	if([self.gpsMonitor startUpGps] == FALSE)
 		NSLog(@"Issue Starting GPS");
 
-	if([self.proximityMonitor startProximitySensor] == FALSE)
-		NSLog(@"Issue Starting the Proximity Sensor");
+//	if([self.proximityMonitor startProximitySensor] == FALSE)
+//		NSLog(@"Issue Starting the Proximity Sensor");
 
 	if([self.activityMonitor startUpActivityMonitoring] == FALSE)
 		NSLog(@"Activity Monitoring not available");
@@ -322,8 +322,10 @@
 	//https://developer.apple.com/LIBRARY/IOS/documentation/CoreMotion/Reference/CMDeviceMotion_Class/index.html
 	*/
 
-	return [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@\n",
-			  dateString, //-2, -1
+	return [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@\n",
+			  @"0", //-2
+			  @"0", //-1
+			  dateString, //0
 			  self.motionMonitor.printableCalibratedMagnetometerInfo,//1, 2, 3
 			  self.motionMonitor.printableCalibratedAccelerometerInfo,//4, 5, 6,
 			  self.gpsMonitor.printableLocationInfo,//7, 8, 9
@@ -332,10 +334,11 @@
 			  self.magnetrometerMonitor.printableMagnetometerInfo,//16, 17, 18
 			  self.gpsMonitor.printableLocationMetaDataInfo,//19, 20, 21, 22, 23
 			  self.accelMonitor.printableRawAccelerometerInfo,//24, 25, 26
-			  self.activityMonitor.printableActivityInfo,//27
-			  self.proximityMonitor.printableProximityInfo,//28
-			  [self orientationToString], //29
-			  self.altimiterMonitor.printableAltimiterInfo];//30, 31
+			  self.activityMonitor.printableActivityInfo,//27, 28
+			  @"0.0", //29
+			  self.altimiterMonitor.printableAltimiterInfo, // 30, 31
+			  self.proximityMonitor.printableProximityInfo,//32
+			  [self orientationToString]]; //33
 }
 
 -(NSString *)orientationToString
@@ -343,24 +346,22 @@
 	switch (self.deviceOrientation)
 	{
 		case UIDeviceOrientationPortrait:
-			return @"OrientationPortrait";
+			return @"0";//@"OrientationPortrait";
 		case UIDeviceOrientationPortraitUpsideDown: // Device oriented vertically, home button on the top
-			return @"OrientationPortraitUpsideDown";
+			return @"0";//@"OrientationPortraitUpsideDown";
 		case UIDeviceOrientationLandscapeLeft:     // Device oriented horizontally, home button on the right
-			return @"OrientationLandscapeLeft";
+			return @"1";//@"OrientationLandscapeLeft";
 		case UIDeviceOrientationLandscapeRight:      // Device oriented horizontally, home button on the left
-			return @"OrientationLandscapeRight";
+			return @"1";//@"OrientationLandscapeRight";
 		case UIDeviceOrientationFaceUp:         // Device oriented flat, face up
-			return @"OrientationFlatFaceUp";
+			//return @"OrientationFlatFaceUp";
 		case UIDeviceOrientationFaceDown:             // Device oriented flat, face down
-			return @"OrientationFlatFaceDown";
+			//return @"OrientationFlatFaceDown";
 		case UIDeviceOrientationUnknown:
 		default:
-			return @"OrientationUnknown";
+			return @"2";//@"OrientationUnknown";
 			break;
 	}
-
-	return @"OrientationUnDefined";
 }
 
 @end

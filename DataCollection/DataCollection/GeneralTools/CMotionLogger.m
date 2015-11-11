@@ -2,20 +2,37 @@
 #import "CSensorSampleInfoContainer.h"
 #import "STSensorManager.h"
 
+typedef enum
+{
+	INVALID_FD,
+	NATIVE_FD,
+	NS_FD//If you're using NSFileHandle
+}FD_TYPE;
+
+
 @interface CMotionLogger()
+	@property(nonatomic) int nativeFileDescriptor;
 	@property(nonatomic, strong) NSDateFormatter *dtFmtr;
 	@property(nonatomic, strong) NSFileHandle *fileHandle;
 	@property(nonatomic, strong) NSString *deviceNameStr;
 
-	-(NSString *)retreiveCurrentFilePathAndName;
-	-(NSData *)dataForFileWrite:(NSString *)dataString;
-	-(NSFileHandle *)createAndOpenFileAtPath:(NSString *)path;
-	-(BOOL)writeCurrentData:(NSString *)sensorInfo;
+	@property(nonatomic, readonly) FD_TYPE eLoggingType;
+
+	-(NSString*) stringFromWalkingSide:(WalkingSide)side;
+	-(NSString*) stringFromVehicleSide:(VehicleSide)side;
+	-(NSString*) stringFromVehicleEnd:(VehicleEnd)end;
 @end
 
 @implementation CMotionLogger
 
 @synthesize fileHandle = _fileHandle;
+@synthesize nativeFileDescriptor = _nativeFileDescriptor;
+
+-(FD_TYPE)eLoggingType
+{
+	//return NS_FD;
+	return NATIVE_FD;
+}
 
 -(NSDateFormatter *)dtFmtr
 {
@@ -52,12 +69,45 @@
 	return loggerMgr;
 }
 
--(void)markAsStartDataCaptureTime
+-(BOOL)isLogging
+{
+	return self.fileHandle != nil || _nativeFileDescriptor > 0;
+}
+
+
+-(void)closeFileDescriptor
 {
 	if(self.fileHandle != nil)
 		[self.fileHandle closeFile];
+	if(self.nativeFileDescriptor > 0)
+		close(_nativeFileDescriptor);
+	
+	self.fileHandle = nil;
+	_nativeFileDescriptor = -1;
+}
 
-	self.fileHandle = [self createAndOpenFileAtPath:[self retreiveCurrentFilePathAndName]];
+-(void)markAsStartDataCaptureTime
+{
+	FD_TYPE eFdType = [self logFileHandleIsValid];
+
+	if(eFdType != INVALID_FD)
+		return;//Don't try to open if you already have a valid file descriptor
+
+	if(self.fileHandle != nil)
+		[self.fileHandle closeFile];
+	if(self.nativeFileDescriptor > 0)
+		close(_nativeFileDescriptor);
+
+	if(self.eLoggingType == NS_FD)
+	{
+		if([self createAndOpenFileAtPath:[self retreiveCurrentFilePathAndName]] == FALSE)
+			NSLog(@"Unable to open the file at path: %@", [self retreiveCurrentFilePathAndName]);
+	}
+	else if(self.eLoggingType == NATIVE_FD)
+	{
+		if([self nativeCreateAndOpenFileAtPath:[self retreiveCurrentFilePathAndName]] == FALSE)
+			NSLog(@"Unable to open the file at path: %@", [self retreiveCurrentFilePathAndName]);
+	}
 }
 
 -(void)logTexting:(BOOL)bIsStarting
@@ -121,13 +171,143 @@
 	}
 }
 
+-(NSString*) stringFromWalkingSide:(WalkingSide)side
+{
+	switch (side)
+	{
+		case WalkingSideLeft:
+			return @"Left";
+		case WalkingSideRight:
+			return @"Right";
+		case WalkingSideNotApplicable:
+			return @"N/A";
+	}
+}
+
+-(NSString*) stringFromVehicleSide:(VehicleSide)side
+{
+	switch (side)
+	{
+		case VehicleSideLeft:
+			return @"Left";
+		case VehicleSideCenter:
+			return @"Center";
+		case VehicleSideRight:
+			return @"Right";
+	}
+}
+
+-(NSString*) stringFromVehicleEnd:(VehicleEnd)end
+{
+	switch (end)
+	{
+		case VehicleEndFront:
+			return @"Front";
+		case VehicleEndRear:
+			return @"Rear";
+	}
+}
+
+-(void)logWalkingDeviceSide:(WalkingSide)side
+{
+	NSString *eventStr = [NSString stringWithFormat:@"NOTICE:WalkingDeviceSide:%@\n", [self stringFromWalkingSide:side]];
+	@try
+	{
+		if([self writeCurrentData:eventStr] == FALSE)
+			NSLog(@"Error writing the Walking Device Side");
+	}
+	@catch (NSException *exception)
+	{
+		NSLog(@"Exception on write attempt: %@", exception.debugDescription);
+	}
+}
+
+-(void)logWalkingDeviceLocation:(NSString*) location
+{
+	NSString *eventStr = [NSString stringWithFormat:@"NOTICE:WalkingDeviceLocation:%@\n", location];
+	@try
+	{
+		if([self writeCurrentData:eventStr] == FALSE)
+			NSLog(@"Error writing the Walking Device Location");
+	}
+	@catch (NSException *exception)
+	{
+		NSLog(@"Exception on write attempt: %@", exception.debugDescription);
+	}
+}
+
+-(void)logVehicleDeviceSide:(VehicleSide)side
+{
+	NSString *eventStr = [NSString stringWithFormat:@"NOTICE:VehicleDeviceSide:%@\n", [self stringFromVehicleSide:side]];
+	@try
+	{
+		if([self writeCurrentData:eventStr] == FALSE)
+			NSLog(@"Error writing the Vehicle Device Side");
+	}
+	@catch (NSException *exception)
+	{
+		NSLog(@"Exception on write attempt: %@", exception.debugDescription);
+	}
+
+}
+
+-(void)logVehicleDeviceLocation:(NSString*) location
+{
+	NSString *eventStr = [NSString stringWithFormat:@"NOTICE:VehicleDeviceLocation:%@\n", location];
+	@try
+	{
+		if([self writeCurrentData:eventStr] == FALSE)
+			NSLog(@"Error writing the Vehicle Device Location");
+	}
+	@catch (NSException *exception)
+	{
+		NSLog(@"Exception on write attempt: %@", exception.debugDescription);
+	}
+
+}
+
+-(void)logVehicleEntryVehicleEnd:(VehicleEnd)end
+{
+	NSString *eventStr = [NSString stringWithFormat:@"NOTICE:VehicleEntryEnd:%@\n", [self stringFromVehicleEnd:end]];
+	@try
+	{
+		if([self writeCurrentData:eventStr] == FALSE)
+			NSLog(@"Error writing the Vehicle Entry Vehicle End");
+	}
+	@catch (NSException *exception)
+	{
+		NSLog(@"Exception on write attempt: %@", exception.debugDescription);
+	}
+
+}
+
+-(void)logVehicleEntryVehicleSide:(VehicleSide)side
+{
+	NSString *eventStr = [NSString stringWithFormat:@"NOTICE:VehicleEntrySide:%@\n", [self stringFromVehicleSide:side]];
+	@try
+	{
+		if([self writeCurrentData:eventStr] == FALSE)
+			NSLog(@"Error writing the Vehicle Entry Vehicle Side");
+	}
+	@catch (NSException *exception)
+	{
+		NSLog(@"Exception on write attempt: %@", exception.debugDescription);
+	}
+
+}
+
 -(void)writeCurrentSamplesToLogFile
 {
 	STSensorManager *sensorMgr = [STSensorManager theSensorManager];
-	
+
 	@try
 	{
-		[self writeCurrentData:[sensorMgr printableString:[self.dtFmtr stringFromDate:[NSDate date]]]];
+		double timestamp = [[NSDate date] timeIntervalSince1970];
+		int64_t timeInMilisInt64 = (int64_t)(timestamp * 1000);
+		
+		NSString *timestampString = [NSString stringWithFormat:@"%lld", timeInMilisInt64];
+		
+		[self writeCurrentData:[sensorMgr printableString:timestampString]];
 	}
 	@catch (NSException *exception)
 	{
@@ -135,19 +315,36 @@
 	}
 }
 
+-(void)writeLineToLog:(NSString *)lineEntry
+{
+	if([self writeCurrentData:lineEntry] == FALSE)
+		NSLog(@"Failed to write out the data entry");
+}
+
 -(BOOL)writeCurrentData:(NSString *)sensorInfo
 {
-	if(sensorInfo == nil)
+	BOOL bRetStat = FALSE;
+
+	FD_TYPE fdType = [self logFileHandleIsValid];
+
+	if( (fdType == INVALID_FD) || (sensorInfo == nil) )
 		return FALSE;
 
-	NSData *fileData = [self dataForFileWrite:sensorInfo];
+	if(fdType == NS_FD)
+	{
+		NSData *fileData = [self dataForFileWrite:sensorInfo];
 
-	BOOL bRetStat = TRUE;
-	if(self.fileHandle != nil)
-		[self.fileHandle writeData:fileData];
+		if(self.fileHandle != nil)
+		{
+			[self.fileHandle writeData:fileData];
+			bRetStat = TRUE;
+		}
+	}
 	else
-		return bRetStat;
-	
+	{
+		bRetStat = [self nativeDataFileWrite:sensorInfo];
+	}
+
 	return bRetStat;
 }
 
@@ -214,23 +411,88 @@
 	return fileData;
 }
 
--(NSFileHandle *)createAndOpenFileAtPath:(NSString *)path
+-(BOOL)nativeDataFileWrite:(NSString *)dataString
 {
-	BOOL fileCreated = [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
+	BOOL bRetStat = FALSE;
+
+	if( (fcntl(_nativeFileDescriptor, F_GETFD) == -1) || (dataString.length <= 0) )
+		return bRetStat;
 	
-	if (! fileCreated)
+	const char *logBuffer = [dataString UTF8String];
+	
+	ssize_t numBytesWritten = write(_nativeFileDescriptor, logBuffer, dataString.length);
+
+	if( (numBytesWritten > 0) && (numBytesWritten == dataString.length) )
+		bRetStat = TRUE;
+	else
+		NSLog(@"Failed to write natvie");
+		
+	return bRetStat;
+}
+
+-(BOOL)createAndOpenFileAtPath:(NSString *)path
+{
+	BOOL fileCreated = FALSE;
+
+	if(self.eLoggingType == NS_FD)
 	{
-		NSLog(@"Path: %@", path);
-		NSLog(@"Error was code: %d - message: %s", errno, strerror(errno));
-		return nil;
+		fileCreated = [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
+
+		if (! fileCreated)
+		{
+			NSLog(@"Path: %@", path);
+			NSLog(@"Error was code: %d - message: %s", errno, strerror(errno));
+			return FALSE;
+		}
+	
+		NSFileHandle * fileHandle = [NSFileHandle fileHandleForWritingAtPath:path];
+	
+		if(fileHandle == nil)
+			return FALSE;
+	
+		self.fileHandle = fileHandle;
+		fileCreated = (self.fileHandle != nil);
+	}
+	else
+	{
+		fileCreated = [self nativeFileDescriptor];
 	}
 	
-	NSFileHandle * fileHandle = [NSFileHandle fileHandleForWritingAtPath:path];
+	return fileCreated;
+}
+
+-(BOOL)nativeCreateAndOpenFileAtPath:(NSString *)path
+{
+	BOOL bRetStat = FALSE;
 	
-	if (fileHandle == nil)
-		return nil;
+	if(path.length <= 0)
+		return bRetStat;
+
+	_nativeFileDescriptor = open([path UTF8String] , O_WRONLY | O_CREAT, S_IRWXU);
+
+	if(_nativeFileDescriptor > 0)
+		bRetStat = TRUE;
 	
-	return fileHandle;
+	return bRetStat;
+}
+
+-(FD_TYPE)logFileHandleIsValid
+{
+	FD_TYPE eRetStat = INVALID_FD;
+
+	if(_nativeFileDescriptor <= 0)
+	{
+		if(self.fileHandle != nil)
+			eRetStat = NS_FD;
+	}
+	else if(_nativeFileDescriptor > 0)
+	{
+		if(fcntl(_nativeFileDescriptor, F_GETFD) != -1)
+			eRetStat = NATIVE_FD;
+
+	}
+
+	return eRetStat;
 }
 
 @end

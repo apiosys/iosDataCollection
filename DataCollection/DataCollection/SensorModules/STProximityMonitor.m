@@ -18,7 +18,8 @@
  */
 -(BOOL) latestProximityReading
 {
-	return [UIDevice currentDevice].proximityState;
+	return FALSE;
+	//return [UIDevice currentDevice].proximityState;
 }
 
 -(void)stopProximitySensor
@@ -36,7 +37,9 @@
 
 -(NSString *)printableProximityInfo
 {
-	return (self.latestProximityReading == TRUE) ? @"Proximity:Close" : @"Proximity:Distant";
+	// Close to User = 0
+	// Distant = 1
+	return (self.latestProximityReading == TRUE) ? @"0" : @"1";
 }
 
 @end

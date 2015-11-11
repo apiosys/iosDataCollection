@@ -27,7 +27,7 @@
 -(NSString *)printableMagnetometerInfo
 {
 	if(self.magnetrometerData == nil)
-		return @"- - -";
+		return @"0 0 0";
 
 	//UnCalibrated/raw magnetrometer - Fields 16, 17, 18
 	return [NSString stringWithFormat:@"%.5lf %.5lf %.5lf",

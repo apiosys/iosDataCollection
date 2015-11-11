@@ -41,7 +41,7 @@
 -(NSString *)printableMotionRateInfo
 {
 	if( (self.deviceMotionData == nil) || (self.deviceMotionData.attitude == nil) )
-		return @"- - -";
+		return @"0 0 0";
 
 	//Motion rate - Fields 13, 14, 15
 	return [NSString stringWithFormat:@"%.5lf %.5lf %.5lf",
@@ -53,7 +53,7 @@
 -(NSString *)printableCalibratedMagnetometerInfo
 {
 	if(self.deviceMotionData == nil)
-		return @"- - -";
+		return @"0 0 0";
 
 	//Calibrated magnetic field - Fields 1, 2, 3
 	return [NSString stringWithFormat:@"%.5lf %.5lf %.5lf",
@@ -65,7 +65,7 @@
 -(NSString *)printableCalibratedAccelerometerInfo
 {
 	if(self.deviceMotionData == nil)
-		return @"- - -";
+		return @"0 0 0";
 
 	//Calibrated accelerometer - Fields 4, 5, 6
 	return [NSString stringWithFormat:@"%.5lf %.5lf %.5lf",

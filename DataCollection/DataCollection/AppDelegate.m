@@ -6,6 +6,9 @@
 //  Copyright © 2015 Apio Systems. All rights reserved.
 //
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 #import "AppDelegate.h"
 #import "CentralManager.h"
 
@@ -23,7 +26,11 @@
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	// Override point for customization after application launch.
+	[Fabric with:@[[Crashlytics class]]];
+	//[Fabric with:@[[Crashlytics]]];
+
+	
+	[UIApplication sharedApplication].idleTimerDisabled = TRUE;
 
 	return YES;
 }
@@ -67,7 +74,6 @@
 	}
 	@catch(NSException *exception)
 	{}
-
 }
 
 @end

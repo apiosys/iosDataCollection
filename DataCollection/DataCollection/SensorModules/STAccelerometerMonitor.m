@@ -29,7 +29,7 @@
 -(NSString *)printableRawAccelerometerInfo
 {
 	if(self.accelerometerData == nil)
-		return @"- - -";
+		return @"0 0 0";
 
 	//Uncalibrated accelerometer - Fields 24, 25, 26
 	return [NSString stringWithFormat:@"%.5lf %.5lf %.5lf",
