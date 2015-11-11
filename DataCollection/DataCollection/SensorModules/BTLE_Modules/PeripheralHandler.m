@@ -7,9 +7,13 @@
 */
 
 #import "CentralManager.h"
+
 #import "CMotionLogger.h"
 
 #import "PeripheralHandler.h"
+
+#import "CentralManager+RemoteDataCollection.h"
+#import "NotifierCBUUIDManager.h"
 
 @interface PeripheralHandler()
 	@property(nonatomic, strong) NSMutableArray *arrPeripherals;
@@ -107,7 +111,10 @@
 		return;
 
 	//We'll go ahead and discover all services.
-	[peripheral discoverServices:nil];
+	[peripheral discoverServices:@[
+								   [NotifierCBUUIDManager eventNotificationServiceUUID],
+								   [NotifierCBUUIDManager remoteDataCollectionServiceUUID]
+								   ]];
 }
 
 #pragma mark - PeripheralDataChange delegate
@@ -147,7 +154,19 @@
 {
 	for(CBService *svrc in peripheral.services)
 	{
-		[peripheral discoverCharacteristics:nil forService:svrc];
+		if ([svrc.UUID isEqual:[NotifierCBUUIDManager eventNotificationServiceUUID]])
+		{
+			[peripheral discoverCharacteristics:@[[NotifierCBUUIDManager eventNotificationMessageCharacteristicUUID]] forService:svrc];
+		}
+		else if ([svrc.UUID isEqual:[NotifierCBUUIDManager remoteDataCollectionServiceUUID]])
+		{
+			[peripheral discoverCharacteristics:@[
+												  [NotifierCBUUIDManager remoteDataCollectionCommandCharacteristicUUID],
+												  [NotifierCBUUIDManager remoteDataCollectionDataCollectorIdentifierCharacteristicUUID],
+												  [NotifierCBUUIDManager remoteDataCollectionDataCollectorCollectionStatusCharacteristicUUID],
+												  ]
+									 forService:svrc];
+		}
 	}
 }
 
@@ -157,26 +176,59 @@
 
 -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
 {
-	for (NSObject *charObj in service.characteristics)
-	{
-		CBCharacteristic *c = (CBCharacteristic *)charObj;
 
-		[peripheral setNotifyValue:TRUE forCharacteristic:c];//Means we're telling the peripheral to notify us when the characteristic updates its value.
+	for (CBCharacteristic * characteristic in service.characteristics) {
+		if ([characteristic.UUID isEqual:[NotifierCBUUIDManager eventNotificationMessageCharacteristicUUID]])
+		{
+			[peripheral setNotifyValue:TRUE forCharacteristic:characteristic];
+		}
+		else if ([characteristic.UUID isEqual:[NotifierCBUUIDManager remoteDataCollectionCommandCharacteristicUUID]])
+		{
+			[peripheral setNotifyValue:TRUE forCharacteristic:characteristic];
+		}
+		else if ([characteristic.UUID isEqual:[NotifierCBUUIDManager remoteDataCollectionDataCollectorIdentifierCharacteristicUUID]])
+		{
+			[[CentralManager theCentral] didDiscoverDataCollectorIdentifierCharacteristic: characteristic ForPeripheral:peripheral];
+		}
+		else if ([characteristic.UUID isEqual:[NotifierCBUUIDManager remoteDataCollectionDataCollectorCollectionStatusCharacteristicUUID]])
+		{
+			[[CentralManager theCentral] didDiscoverDataCollectionStatusCharacteristic: characteristic ForPeripheral: peripheral];
+		}
 	}
+
 }
 
 //This is what gets called because of the call to "setNotifyValue"
 -(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-	const int MIN_MSG_LEN = 5;
-	const int MAX_MSG_LEN = 32;
 
-	NSString *strValue = [[NSString alloc]initWithData:characteristic.value encoding:NSUTF8StringEncoding];
-	if( (strValue.length >= MIN_MSG_LEN) && (strValue.length <= MAX_MSG_LEN) )
+	NSString *strValue = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
+
+	// Handle Service Messages (Events Start/Stop and Updated Conditions
+	if ([characteristic.UUID isEqual: [NotifierCBUUIDManager eventNotificationMessageCharacteristicUUID]])
 	{
-		strValue = [strValue stringByAppendingString:@"\n"];
-		[[CMotionLogger theLogger] writeLineToLog:strValue];
+		const int MIN_MSG_LEN = 5;
+		const int MAX_MSG_LEN = 32;
+
+		if( (strValue.length >= MIN_MSG_LEN) && (strValue.length <= MAX_MSG_LEN) )
+		{
+			strValue = [strValue stringByAppendingString:@"\n"];
+			[[CMotionLogger theLogger] writeLineToLog:strValue];
+		}
 	}
+	else if ([characteristic.UUID isEqual:[NotifierCBUUIDManager remoteDataCollectionCommandCharacteristicUUID]])
+	{
+		if ([strValue isEqualToString:@"START_CAPTURE"])
+		{
+			[[CentralManager theCentral] startDataCollection];
+		}
+		else if ([strValue isEqualToString:@"STOP_CAPTURE"])
+		{
+			[[CentralManager theCentral] stopDataCollection];
+		}
+	}
+
+
 }
 
 -(void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error

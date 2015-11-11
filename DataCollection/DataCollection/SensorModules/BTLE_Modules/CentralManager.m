@@ -8,11 +8,13 @@
 
 #import "CentralManager.h"
 #import "PeripheralHandler.h"
+#import "NotifierCBUUIDManager.h"
 
 @interface CentralManager()
 	@property(nonatomic, strong) PeripheralHandler *periphHndlr;
 	@property(nonatomic, strong) CBCentralManager *centralMgr;
 	@property(nonatomic, strong) NSMutableArray *arrDelegateListeners;
+	@property(nonatomic, strong) NSMutableDictionary * subscribedPeripheralsToCharacteristicMapForDataCollectionStatus;
 @end
 
 @implementation CentralManager
@@ -89,10 +91,9 @@
 	if(_bAllowedToScan == FALSE)
 		return;
 
-	CBUUID *ud = [CBUUID UUIDWithString:@"CC2F4502-DE41-47D9-BFC3-BCB85136DC45"];
+	NSArray * allowedServices = @[[NotifierCBUUIDManager eventNotificationServiceUUID], [NotifierCBUUIDManager remoteDataCollectionServiceUUID]];
 
-	//[self.centralMgr scanForPeripheralsWithServices:nil options:nil];
-	[self.centralMgr scanForPeripheralsWithServices:@[ud] options:nil];
+	[self.centralMgr scanForPeripheralsWithServices:allowedServices options:nil];
 }
 
 -(void)cancelPeripheralConnection:(CBPeripheral *)peripheral
@@ -246,5 +247,62 @@ didDiscoverPeripheral:(CBPeripheral *)peripheral
  *  @see				peripheral:didUpdateValueForDescriptor:error:
  */
 //- (void)readValueForDescriptor:(CBDescriptor *)descriptor;
+
+#pragma mark - Remote Data Collection Methods
+
+-(void)startDataCollection
+{
+	if (self.remoteNotifierDelegate != nil && [self.remoteNotifierDelegate respondsToSelector:@selector(didReceiveStartDataCollectionCommand)])
+	{
+		[self.remoteNotifierDelegate didReceiveStartDataCollectionCommand];
+	}
+}
+
+-(void)stopDataCollection
+{
+	if (self.remoteNotifierDelegate != nil && [self.remoteNotifierDelegate respondsToSelector:@selector(didReceiveStopDataCollectionCommand)])
+	{
+		[self.remoteNotifierDelegate didReceiveStopDataCollectionCommand];
+	}
+}
+
+-(void)didDiscoverDataCollectorIdentifierCharacteristic:(CBCharacteristic *)characteristic ForPeripheral:(CBPeripheral *)peripheral
+{
+	if (self.remoteNotifierDelegate != nil && [self.remoteNotifierDelegate respondsToSelector:@selector(deviceIdenfitier)])
+	{
+		NSString * deviceIdentifier = [self.remoteNotifierDelegate deviceIdenfitier];
+		NSData * data = [deviceIdentifier dataUsingEncoding:NSUTF8StringEncoding];
+		[peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
+	}
+}
+
+-(void)didDiscoverDataCollectionStatusCharacteristic:(CBCharacteristic *)characteristic ForPeripheral:(CBPeripheral *) peripheral
+{
+
+	if (self.subscribedPeripheralsToCharacteristicMapForDataCollectionStatus == nil)
+	{
+		self.subscribedPeripheralsToCharacteristicMapForDataCollectionStatus = [NSMutableDictionary dictionary];
+	}
+
+	if (self.remoteNotifierDelegate != nil && [self.remoteNotifierDelegate respondsToSelector:@selector(startDataCollectionStatusUpdates:)])
+	{
+		[self.subscribedPeripheralsToCharacteristicMapForDataCollectionStatus setObject:characteristic forKey:peripheral];
+		[self.remoteNotifierDelegate startDataCollectionStatusUpdates:self];
+	}
+}
+
+-(void)dataCollectionStatusUpdated:(BOOL)isCollecting
+{
+
+	NSString * stringValue = isCollecting ? @"Y" : @"N";
+	NSData * data = [stringValue dataUsingEncoding:NSUTF8StringEncoding];
+
+	for (CBPeripheral * peripheral in self.subscribedPeripheralsToCharacteristicMapForDataCollectionStatus.allKeys)
+	{
+		CBCharacteristic * characteristic = [self.subscribedPeripheralsToCharacteristicMapForDataCollectionStatus objectForKey:peripheral];
+		[peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
+	}
+}
+
 
 @end

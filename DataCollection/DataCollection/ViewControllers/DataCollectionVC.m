@@ -19,6 +19,9 @@
 #import "CMotionLogger.h"
 #import "CPhoneInformationManager.h"
 
+#import "CentralManager.h"
+#import "CentralManager+RemoteDataCollection.h"
+
 @interface DataCollectionVC ()
 	@property(nonatomic) BOOL bIsRunning;
 
@@ -40,11 +43,17 @@
 	@property (weak, nonatomic) IBOutlet UISwitch *userIsDriverSwitch;
 	@property(nonatomic, weak) IBOutlet UIActivityIndicatorView *activityWheel;
 
+	@property (nonatomic, strong) id<DataCollectionStatusDelegate> dataCollectionStatusDelegate;
+
 	-(IBAction)onStopSensors:(UIButton *)sender;
 	-(IBAction)onStartSensors:(UIButton *)sender;
 	-(IBAction)onGeneralHandling:(UIButton *)sender;
 	-(IBAction)onUserIsDriverSwitch:(UISwitch *)sender;
 	-(IBAction)onPhoneCallSimulation:(UIButton *)sender;
+@end
+
+@interface DataCollectionVC () <RemoteNotifierDelegate>
+
 @end
 
 @implementation DataCollectionVC
@@ -115,9 +124,10 @@
 	NSString *strName = [[bundleName componentsSeparatedByString:@"."] lastObject];
 	
 	self.lblAppInfo.text = [NSString stringWithFormat:@"%@ - %@", strName, strVer];
-	
-	// Do any additional setup after loading the view, typically from a nib.
+
 	self.bIsRunning = FALSE;
+
+	[CentralManager theCentral].remoteNotifierDelegate = self;
 }
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -220,53 +230,105 @@
 	}
 }
 
--(IBAction)onStartSensors:(UIButton *)sender
+-(void) startSensors
 {
 	if(self.bIsRunning == TRUE)
 		return;
-	
+
 	self.btnStopRecording.backgroundColor =
 	self.btnStartRecording.backgroundColor =
 	self.btnStartStopPhoneCall.backgroundColor =
 	self.btnStartStopGeneralHandling.backgroundColor = self.activeButtonColor;
-	
+
 	//Before anything else happens - mark the start recording time!
 	CSensorSampleInfoContainer.startRecTime = [NSDate date];
-	
+
 	[[CMotionLogger theLogger] markAsStartDataCaptureTime];
 	[[CMotionLogger theLogger] logUserIsDriver:self.userIsDriverSwitch.on];
 	[[CPhoneInformationManager thePhoneInformationManager] logPhoneInformation];
-	
+
 	if ([[STSensorManager theSensorManager] startSensors] == FALSE)
 		NSLog(@"Failed to start all the sensors");
-	
+
+	if (self.dataCollectionStatusDelegate != nil)
+	{
+		[self.dataCollectionStatusDelegate dataCollectionStatusUpdated:TRUE];
+	}
+
 	self.bIsRunning = TRUE;
 }
 
--(IBAction)onStopSensors:(UIButton *)sender
+-(void)stopSensors
 {
 	if(self.bIsRunning == FALSE)
 		return;
-	
+
 	[self.btnStartStopPhoneCall setTitle:self.startPhoneCall forState:UIControlStateNormal];
 	[self.btnStartStopGeneralHandling setTitle:self.startGeneralHandling forState:UIControlStateNormal];
-	
+
 	self.btnStopRecording.backgroundColor =
 	self.btnStartRecording.backgroundColor =
 	self.btnStartStopPhoneCall.backgroundColor =
 	self.btnStartStopGeneralHandling.backgroundColor = self.sensorsStoppedColor;
-	
+
 	[self.activityWheel startAnimating];
 	self.btnStopRecording.enabled = self.btnStartRecording.enabled = FALSE;
-	
+
 	self.bIsRunning = FALSE;
-	
+
 	[[STSensorManager theSensorManager] stopSensors];
-	
+
+	if (self.dataCollectionStatusDelegate != nil)
+	{
+		[self.dataCollectionStatusDelegate dataCollectionStatusUpdated:FALSE];
+	}
+
 	[self.activityWheel stopAnimating];
 	self.btnStopRecording.enabled = self.btnStartRecording.enabled = TRUE;
-	
+
 	[[CMotionLogger theLogger] closeFileDescriptor];
+}
+
+-(IBAction)onStartSensors:(UIButton *)sender
+{
+	[self startSensors];
+}
+
+-(IBAction)onStopSensors:(UIButton *)sender
+{
+	[self stopSensors];
+}
+
+#pragma mark - Remote Notifier Delegate methods
+
+-(void)didReceiveStartDataCollectionCommand
+{
+	[[NSOperationQueue mainQueue] addOperationWithBlock:^
+	{
+		[self startSensors];
+	}];
+}
+
+-(void)didReceiveStopDataCollectionCommand
+{
+	[[NSOperationQueue mainQueue] addOperationWithBlock:^
+	{
+		[self stopSensors];
+	}];
+}
+
+-(NSString *)deviceIdenfitier
+{
+	return [[UIDevice currentDevice] name];
+}
+
+- (void)startDataCollectionStatusUpdates:(id<DataCollectionStatusDelegate>)delegate
+{
+	self.dataCollectionStatusDelegate = delegate;
+	if (delegate != nil)
+	{
+		[delegate dataCollectionStatusUpdated:self.bIsRunning];
+	}
 }
 
 @end

@@ -62,6 +62,8 @@
 		057C47D51BC30C8000517C28 /* STAltimiterMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47D31BC30C8000517C28 /* STAltimiterMonitor.m */; };
 		057C47D61BC30C8000517C28 /* STAltimiterMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 057C47D31BC30C8000517C28 /* STAltimiterMonitor.m */; };
 		0C1818701BDFCEE900DB8723 /* DeviceLocationTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C18186F1BDFCEE900DB8723 /* DeviceLocationTVC.m */; };
+		0C85FE271BE94819006CEF07 /* NotifierCBUUIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C85FE261BE94819006CEF07 /* NotifierCBUUIDManager.m */; };
+		0C85FE2A1BE94B08006CEF07 /* CentralManager+RemoteDataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C85FE291BE94B08006CEF07 /* CentralManager+RemoteDataCollection.m */; };
 		0CA76CB71BCFDBA30028B8B0 /* PhonePositionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA76CB61BCFDBA30028B8B0 /* PhonePositionVC.m */; };
 		0CA76CC71BD0036B0028B8B0 /* CPhoneInformationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA76CC61BD0036B0028B8B0 /* CPhoneInformationManager.m */; };
 		DF067A0806C0DA52A20C118C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D2DF43F621F84767FEDDF5 /* libPods.a */; };
@@ -138,6 +140,10 @@
 		057C47D31BC30C8000517C28 /* STAltimiterMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STAltimiterMonitor.m; path = DataCollection/SensorModules/STAltimiterMonitor.m; sourceTree = "<group>"; };
 		0C18186E1BDFCEE900DB8723 /* DeviceLocationTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceLocationTVC.h; path = DataCollection/ViewControllers/DeviceLocationTVC.h; sourceTree = "<group>"; };
 		0C18186F1BDFCEE900DB8723 /* DeviceLocationTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceLocationTVC.m; path = DataCollection/ViewControllers/DeviceLocationTVC.m; sourceTree = "<group>"; };
+		0C85FE251BE94819006CEF07 /* NotifierCBUUIDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifierCBUUIDManager.h; sourceTree = "<group>"; };
+		0C85FE261BE94819006CEF07 /* NotifierCBUUIDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifierCBUUIDManager.m; sourceTree = "<group>"; };
+		0C85FE281BE94B08006CEF07 /* CentralManager+RemoteDataCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CentralManager+RemoteDataCollection.h"; path = "DataCollection/SensorModules/BTLE_Modules/CentralManager+RemoteDataCollection.h"; sourceTree = "<group>"; };
+		0C85FE291BE94B08006CEF07 /* CentralManager+RemoteDataCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CentralManager+RemoteDataCollection.m"; path = "DataCollection/SensorModules/BTLE_Modules/CentralManager+RemoteDataCollection.m"; sourceTree = "<group>"; };
 		0CA76CB51BCFDBA30028B8B0 /* PhonePositionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhonePositionVC.h; path = DataCollection/ViewControllers/PhonePositionVC.h; sourceTree = "<group>"; };
 		0CA76CB61BCFDBA30028B8B0 /* PhonePositionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhonePositionVC.m; path = DataCollection/ViewControllers/PhonePositionVC.m; sourceTree = "<group>"; };
 		0CA76CC51BD0036B0028B8B0 /* CPhoneInformationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPhoneInformationManager.h; path = DataCollection/GeneralTools/CPhoneInformationManager.h; sourceTree = "<group>"; };
@@ -288,12 +294,16 @@
 		057C478D1BC2F78800517C28 /* BTLE_Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0C85FE251BE94819006CEF07 /* NotifierCBUUIDManager.h */,
+				0C85FE261BE94819006CEF07 /* NotifierCBUUIDManager.m */,
 				057C47B81BC2F7B700517C28 /* CBtleCentralManager.h */,
 				057C47B91BC2F7B700517C28 /* CBtleCentralManager.m */,
 				057C47BA1BC2F7B700517C28 /* CentralManager.h */,
 				057C47BB1BC2F7B700517C28 /* CentralManager.m */,
 				057C47BC1BC2F7B700517C28 /* PeripheralHandler.h */,
 				057C47BD1BC2F7B700517C28 /* PeripheralHandler.m */,
+				0C85FE281BE94B08006CEF07 /* CentralManager+RemoteDataCollection.h */,
+				0C85FE291BE94B08006CEF07 /* CentralManager+RemoteDataCollection.m */,
 			);
 			name = BTLE_Modules;
 			sourceTree = "<group>";
@@ -362,6 +372,7 @@
 				057C47441BC2E90400517C28 /* Resources */,
 				A386CE839E702F413264F89C /* Copy Pods Resources */,
 				05B81F481BCD43690089D9AA /* ShellScript */,
+				C684A078386824CE18098035 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -512,6 +523,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C684A078386824CE18098035 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D669225B335F3C562C917943 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -535,11 +561,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				057C47CF1BC2F84A00517C28 /* CSensorSampleInfoContainer.m in Sources */,
+				0C85FE271BE94819006CEF07 /* NotifierCBUUIDManager.m in Sources */,
 				057C47B51BC2F7A700517C28 /* STSensorManager.m in Sources */,
 				0CA76CC71BD0036B0028B8B0 /* CPhoneInformationManager.m in Sources */,
 				0CA76CB71BCFDBA30028B8B0 /* PhonePositionVC.m in Sources */,
 				057C47B21BC2F7A700517C28 /* STProximityMonitor.m in Sources */,
 				057C474E1BC2E90400517C28 /* AppDelegate.m in Sources */,
+				0C85FE2A1BE94B08006CEF07 /* CentralManager+RemoteDataCollection.m in Sources */,
 				0C1818701BDFCEE900DB8723 /* DeviceLocationTVC.m in Sources */,
 				057C47CA1BC2F82700517C28 /* CMotionLogger.m in Sources */,
 				057C47C11BC2F7B700517C28 /* CentralManager.m in Sources */,

@@ -17,7 +17,24 @@
 	-(void)connectedToPeripheral:(BOOL)bConnected thePeripheral:(CBPeripheral *)peripheral;
 @end
 
-@interface CentralManager : NSObject<CBCentralManagerDelegate>
+@protocol DataCollectionStatusDelegate <NSObject>
+
+@required
+	-(void) dataCollectionStatusUpdated:(BOOL)isCollecting;
+
+@end
+
+@protocol RemoteNotifierDelegate <NSObject>
+
+@optional
+-(void)didReceiveStartDataCollectionCommand;
+-(void)didReceiveStopDataCollectionCommand;
+
+-(NSString*) deviceIdenfitier;
+-(void) startDataCollectionStatusUpdates:(id<DataCollectionStatusDelegate>)delegate;
+@end
+
+@interface CentralManager : NSObject<CBCentralManagerDelegate, DataCollectionStatusDelegate>
 	@property(nonatomic, readonly) NSInteger numberOfPeripherals;
 
 	-(void)addDelegateListener:(id<PeripheralDataChange>) periphChangeStateDelegate;
@@ -30,5 +47,13 @@
 	-(CBPeripheral *)peripheralAtIndex:(NSInteger)iIndex;
 	-(void)connectToPeripheral:(CBPeripheral *)peripheral;
 	-(void)cancelPeripheralConnection:(CBPeripheral *)peripheral;
+
+
+	@property(nonatomic, strong) id<RemoteNotifierDelegate> remoteNotifierDelegate;
+
+	-(void)startDataCollection;
+	-(void)stopDataCollection;
+	-(void)didDiscoverDataCollectorIdentifierCharacteristic:(CBCharacteristic *)characteristic ForPeripheral:(CBPeripheral *)peripheral;
+	-(void)didDiscoverDataCollectionStatusCharacteristic:(CBCharacteristic *)characteristic ForPeripheral:(CBPeripheral *) peripheral;
 
 @end
