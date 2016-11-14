@@ -23,6 +23,12 @@
  */
 @property(nonatomic, readonly) CLLocation *latestLocation;//Don't synthesize
 
+
+/**
+ Requests Always usage location permissions
+ */
+-(void)requestLocationPermissions;
+
 /**
  Stops listening for location updates provided by the CLLocationManager
  */

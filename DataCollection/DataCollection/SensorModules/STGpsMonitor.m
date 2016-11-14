@@ -33,6 +33,12 @@
 	return self.locMgr.location;
 }
 
+- (void)requestLocationPermissions
+{
+    if ([self.locMgr respondsToSelector:@selector(requestAlwaysAuthorization)])
+        [self.locMgr requestAlwaysAuthorization];
+}
+
 -(NSString *)printableLocationInfo
 {
 	if(self.locMgr.location == nil)

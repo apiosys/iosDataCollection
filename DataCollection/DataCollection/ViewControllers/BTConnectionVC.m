@@ -27,6 +27,7 @@
 	// Do any additional setup after loading the view.
 	[[CentralManager theCentral] addDelegateListener:self];
 	[self disableConnectButton];
+    [self configureUIElements];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -49,7 +50,9 @@
 
 	if(self.peripheral == nil)
 	{
-		[OHAlertView showAlertWithTitle:@"No Peripherals" message:@"There are no discovered periperals to connect to." dismissButton:@"OK"];
+//		[OHAlertView showAlertWithTitle:@"No Peripherals" message:@"There are no discovered periperals to connect to." dismissButton:@"OK"];
+        self.txtbxPeripheral.text = self.peripheral.name;
+        [self disableConnectButton];
 		return;
 	}
 	
@@ -84,6 +87,11 @@
 	[self.connectToBTPeripheral setTitle:@"Connect" forState:UIControlStateNormal];
 	self.connectToBTPeripheral.enabled = FALSE;
 	self.connectToBTPeripheral.layer.opacity = 0.5;
+}
+
+-(void)configureUIElements
+{
+    self.txtbxPeripheral.enabled = NO;
 }
 
 #pragma mark - calls to find and connect to peripherals
@@ -132,9 +140,8 @@
 -(void)disconnecteCalled
 {
 	[[CentralManager theCentral] disconnectAllBTPeripherals];
+    self.peripheral = nil;
 	[self displayPeripheralInfomation];
-	self.peripheral = nil;
-	self.connectToBTPeripheral.enabled = FALSE;
 }
 
 -(void)discoveredNewPeripheral:(CBPeripheral *)peripheral
