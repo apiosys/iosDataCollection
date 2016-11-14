@@ -1,5 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-pod 'Fabric'
-pod 'Crashlytics'
-pod 'OHAlertView'
+target 'DataCollection' do
+	pod 'Fabric'
+	pod 'Crashlytics'
+	pod 'OHAlertView'
+end

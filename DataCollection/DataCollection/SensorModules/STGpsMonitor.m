@@ -83,6 +83,9 @@
 
 		self.locMgr.delegate = self;
 		self.locMgr.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locMgr.distanceFilter = kCLDistanceFilterNone;
+        self.locMgr.pausesLocationUpdatesAutomatically = NO;
+        
 		[self.locMgr startUpdatingLocation];
 	}
 	else
