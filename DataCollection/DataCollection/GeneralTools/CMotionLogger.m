@@ -49,7 +49,7 @@ typedef enum
 {
 	if(_deviceNameStr == nil)
 	{
-		NSCharacterSet *unallowedFileNameCharacters = [NSCharacterSet characterSetWithCharactersInString:@"_'\":*&^%$#@!~`<>?/\\{}[]=+ "];
+		NSCharacterSet *unallowedFileNameCharacters = [NSCharacterSet characterSetWithCharactersInString:@"_'\":*&^%$#@!~`<>?/\\{}[]=+’ "];
 		_deviceNameStr = [[[UIDevice currentDevice].name componentsSeparatedByCharactersInSet:unallowedFileNameCharacters] componentsJoinedByString:@""];
 	}
 

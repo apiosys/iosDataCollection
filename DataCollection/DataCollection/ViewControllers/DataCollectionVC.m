@@ -135,7 +135,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [[STSensorManager theSensorManager].gpsSensorMonitor requestLocationPermissions];
-    [[STSensorManager theSensorManager] requestMotionPermissions];
 }
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
