@@ -33,6 +33,12 @@
 	return self.locMgr.location;
 }
 
+- (void)requestLocationPermissions
+{
+    if ([self.locMgr respondsToSelector:@selector(requestAlwaysAuthorization)])
+        [self.locMgr requestAlwaysAuthorization];
+}
+
 -(NSString *)printableLocationInfo
 {
 	if(self.locMgr.location == nil)
@@ -83,6 +89,9 @@
 
 		self.locMgr.delegate = self;
 		self.locMgr.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locMgr.distanceFilter = kCLDistanceFilterNone;
+        self.locMgr.pausesLocationUpdatesAutomatically = NO;
+        
 		[self.locMgr startUpdatingLocation];
 	}
 	else

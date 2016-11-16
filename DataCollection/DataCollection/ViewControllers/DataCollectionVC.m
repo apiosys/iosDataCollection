@@ -22,6 +22,8 @@
 #import "CentralManager.h"
 #import "CentralManager+RemoteDataCollection.h"
 
+#import "STGpsMonitor.h"
+
 @interface DataCollectionVC ()
 	@property(nonatomic) BOOL bIsRunning;
 
@@ -126,8 +128,13 @@
 	self.lblAppInfo.text = [NSString stringWithFormat:@"%@ - %@", strName, strVer];
 
 	self.bIsRunning = FALSE;
-
+    
 	[CentralManager theCentral].remoteNotifierDelegate = self;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [[STSensorManager theSensorManager].gpsSensorMonitor requestLocationPermissions];
 }
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
